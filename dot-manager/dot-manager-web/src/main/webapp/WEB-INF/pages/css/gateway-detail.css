@@ -1,0 +1,36 @@
+ .my-user-details li a span {
+  color: #373e4a;
+  font-weight: normal;
+}
+
+
+.scell_top {
+	border-top-width: thin;
+	border-top-style: solid;
+	border-top-color: #999;
+	padding-top:5px;
+	padding-bottom:10px;
+	padding-left:10px;	
+	color:gray
+}
+
+
+.scell_noboard {
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	color:gray;
+	padding-top:10px;
+	padding-left:10px;
+
+}
+.scell_bottom {
+	border-bottom-width: thin;
+	border-bottom-style: solid;
+	border-bottom-color: #999;
+	padding-top:5px;
+	padding-bottom:10px;
+	padding-left:10px;	
+	color: gray-darker
+}

@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dot.mapper.TbGatewayInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.dot.pojo.TbGatewayInfo" >
+    <id column="serial_Number" property="serialNumber" jdbcType="VARCHAR" />
+    <result column="device_Name" property="deviceName" jdbcType="VARCHAR" />
+    <result column="position" property="position" jdbcType="VARCHAR" />
+    <result column="created" property="created" jdbcType="TIMESTAMP" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="hardware_Version" property="hardwareVersion" jdbcType="VARCHAR" />
+    <result column="software_Version" property="softwareVersion" jdbcType="VARCHAR" />
+    <result column="boot_Time" property="bootTime" jdbcType="TIMESTAMP" />
+    <result column="last_Reboot_type" property="lastRebootType" jdbcType="INTEGER" />
+    <result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    serial_Number, device_Name, position, created, type, hardware_Version, software_Version, 
+    boot_Time, last_Reboot_type, updated_time
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.dot.pojo.TbGatewayInfoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tb_gateway_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_gateway_info
+    where serial_Number = #{serialNumber,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from tb_gateway_info
+    where serial_Number = #{serialNumber,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.dot.pojo.TbGatewayInfoExample" >
+    delete from tb_gateway_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.dot.pojo.TbGatewayInfo" >
+    insert into tb_gateway_info (serial_Number, device_Name, position, 
+      created, type, hardware_Version, 
+      software_Version, boot_Time, last_Reboot_type, 
+      updated_time)
+    values (#{serialNumber,jdbcType=VARCHAR}, #{deviceName,jdbcType=VARCHAR}, #{position,jdbcType=VARCHAR}, 
+      #{created,jdbcType=TIMESTAMP}, #{type,jdbcType=VARCHAR}, #{hardwareVersion,jdbcType=VARCHAR}, 
+      #{softwareVersion,jdbcType=VARCHAR}, #{bootTime,jdbcType=TIMESTAMP}, #{lastRebootType,jdbcType=INTEGER}, 
+      #{updatedTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.dot.pojo.TbGatewayInfo" >
+    insert into tb_gateway_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="serialNumber != null" >
+        serial_Number,
+      </if>
+      <if test="deviceName != null" >
+        device_Name,
+      </if>
+      <if test="position != null" >
+        position,
+      </if>
+      <if test="created != null" >
+        created,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="hardwareVersion != null" >
+        hardware_Version,
+      </if>
+      <if test="softwareVersion != null" >
+        software_Version,
+      </if>
+      <if test="bootTime != null" >
+        boot_Time,
+      </if>
+      <if test="lastRebootType != null" >
+        last_Reboot_type,
+      </if>
+      <if test="updatedTime != null" >
+        updated_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="serialNumber != null" >
+        #{serialNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceName != null" >
+        #{deviceName,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null" >
+        #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="created != null" >
+        #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="hardwareVersion != null" >
+        #{hardwareVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="softwareVersion != null" >
+        #{softwareVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="bootTime != null" >
+        #{bootTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastRebootType != null" >
+        #{lastRebootType,jdbcType=INTEGER},
+      </if>
+      <if test="updatedTime != null" >
+        #{updatedTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.dot.pojo.TbGatewayInfoExample" resultType="java.lang.Integer" >
+    select count(*) from tb_gateway_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update tb_gateway_info
+    <set >
+      <if test="record.serialNumber != null" >
+        serial_Number = #{record.serialNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.deviceName != null" >
+        device_Name = #{record.deviceName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.position != null" >
+        position = #{record.position,jdbcType=VARCHAR},
+      </if>
+      <if test="record.created != null" >
+        created = #{record.created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.type != null" >
+        type = #{record.type,jdbcType=VARCHAR},
+      </if>
+      <if test="record.hardwareVersion != null" >
+        hardware_Version = #{record.hardwareVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="record.softwareVersion != null" >
+        software_Version = #{record.softwareVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bootTime != null" >
+        boot_Time = #{record.bootTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.lastRebootType != null" >
+        last_Reboot_type = #{record.lastRebootType,jdbcType=INTEGER},
+      </if>
+      <if test="record.updatedTime != null" >
+        updated_time = #{record.updatedTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update tb_gateway_info
+    set serial_Number = #{record.serialNumber,jdbcType=VARCHAR},
+      device_Name = #{record.deviceName,jdbcType=VARCHAR},
+      position = #{record.position,jdbcType=VARCHAR},
+      created = #{record.created,jdbcType=TIMESTAMP},
+      type = #{record.type,jdbcType=VARCHAR},
+      hardware_Version = #{record.hardwareVersion,jdbcType=VARCHAR},
+      software_Version = #{record.softwareVersion,jdbcType=VARCHAR},
+      boot_Time = #{record.bootTime,jdbcType=TIMESTAMP},
+      last_Reboot_type = #{record.lastRebootType,jdbcType=INTEGER},
+      updated_time = #{record.updatedTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dot.pojo.TbGatewayInfo" >
+    update tb_gateway_info
+    <set >
+      <if test="deviceName != null" >
+        device_Name = #{deviceName,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null" >
+        position = #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="created != null" >
+        created = #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="hardwareVersion != null" >
+        hardware_Version = #{hardwareVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="softwareVersion != null" >
+        software_Version = #{softwareVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="bootTime != null" >
+        boot_Time = #{bootTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastRebootType != null" >
+        last_Reboot_type = #{lastRebootType,jdbcType=INTEGER},
+      </if>
+      <if test="updatedTime != null" >
+        updated_time = #{updatedTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where serial_Number = #{serialNumber,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dot.pojo.TbGatewayInfo" >
+    update tb_gateway_info
+    set device_Name = #{deviceName,jdbcType=VARCHAR},
+      position = #{position,jdbcType=VARCHAR},
+      created = #{created,jdbcType=TIMESTAMP},
+      type = #{type,jdbcType=VARCHAR},
+      hardware_Version = #{hardwareVersion,jdbcType=VARCHAR},
+      software_Version = #{softwareVersion,jdbcType=VARCHAR},
+      boot_Time = #{bootTime,jdbcType=TIMESTAMP},
+      last_Reboot_type = #{lastRebootType,jdbcType=INTEGER},
+      updated_time = #{updatedTime,jdbcType=TIMESTAMP}
+    where serial_Number = #{serialNumber,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,113 @@
+package com.dot.service.impl;
+
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.dot.mapper.TbGatewayInfoMapper;
+import com.dot.pojo.TbGatewayInfo;
+import com.dot.pojo.TbGatewayInfoExample;
+import com.dot.service.GatewayInfoService;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+
+import dot.com.common.pojo.EUDataGridResult;
+import dot.com.common.result.TaotaoResult;
+
+@Service
+public class GatewayInfoServiceImpl implements GatewayInfoService {
+	
+	@Autowired
+	private TbGatewayInfoMapper itemMapper;
+	
+	@Override
+/**
+ *  add gateway basic information to DB	
+ * <p>Title: createGatewayInfoItem</p>
+ * <p>Description: </p>
+ * @param item
+ * @return
+ * @see com.dot.service.GatewayInfoService#createGatewayInfoItem(com.dot.pojo.TbGatewayInfo)
+ */
+	public TaotaoResult createGatewayInfoItem(TbGatewayInfo item) {
+		// TODO Auto-generated method stub
+		item.setCreated(new Date());
+		itemMapper.insert(item);
+		return TaotaoResult.ok();
+	}
+	
+	/**
+	 * get the gateway information to UI display
+	 * <p>Title: getGatewayList</p>
+	 * <p>Description: </p>
+	 * @param page
+	 * @param rows
+	 * @return
+	 * @see com.dot.service.GatewayInfoService#getGatewayList(java.lang.Integer, java.lang.Integer)
+	 */
+	@Override
+	public EUDataGridResult getGatewayList(Integer page, Integer rows) {
+		// TODO Auto-generated method stub
+		//S1: lookup the basic information from table gatewayinfo
+		TbGatewayInfoExample ex = new TbGatewayInfoExample();
+		PageHelper.startPage(page, rows);
+		
+		List<TbGatewayInfo> list = itemMapper.selectByExample(ex);
+		
+		//S2 according the records, add the run information
+		EUDataGridResult result = new EUDataGridResult();
+		
+		PageInfo<TbGatewayInfo> pageInfo = new PageInfo<>(list);
+		int total = (int) pageInfo.getTotal();
+		result.setTotal( Integer.valueOf(total));
+		result.setRows(list);	
+		
+		return result;				
+
+	}
+	
+	/**
+	 * only update the filed from jms message, include
+	 *     software_version,hardware_version,reboot time, reboot type
+	 * <p>Title: updateRunGatewayInfo</p>
+	 * <p>Description: </p>
+	 * @param record
+	 * @return
+	 */
+	@Override
+	public TaotaoResult updateRunGatewayInfo(TbGatewayInfo record) {
+		// TODO Auto-generated method stub
+		itemMapper.updateByPrimaryKeySelective(record);
+
+
+		return TaotaoResult.ok();
+	}
+	
+	/**
+	 * only update the filed from input form, include
+	 *     position,device_name, type 
+	 * <p>Title: updateStaticGatewayInfo</p>
+	 * <p>Description: </p>
+	 * @param record
+	 * @return
+	 */	
+	@Override
+	public TaotaoResult updateStaticGatewayInfo(TbGatewayInfo record) {
+		// TODO Auto-generated method stub
+		itemMapper.updateByPrimaryKeySelective(record);
+
+		return TaotaoResult.ok();		
+	}
+
+	@Override
+	public TaotaoResult deleteGatewayBySeriesNumber(String esn) {
+		// TODO Auto-generated method stub
+		itemMapper.deleteByPrimaryKey(esn);
+		return null;
+	}
+
+}

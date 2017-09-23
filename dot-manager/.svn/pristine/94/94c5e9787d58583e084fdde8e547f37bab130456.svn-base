@@ -1,0 +1,121 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+<body>
+<table >
+  <tr>
+    <td><h1><span id="device_name_in_accordin"><strong>2102351HND1173000013</strong></span></h1>
+    <h3>     &#8226;Online </h3></td>
+  </tr>
+</table>
+<hr />
+<div class="device_info">
+  <div class="basic_info" id="basic_info">
+      <h3>Basic Information</h3>
+      <h3>&nbsp;</h3>
+      <hr " />
+    <table id="tb_basic_info" position="relative" width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="50%" class="scell_noboard">Name:</td>
+          <td width="50%" class="scell_noboard">Group:</td>
+        </tr>
+        <tr>
+          <td class="scell_bottom" id="deviceName">&nbsp;</td>
+          <td class="scell_bottom" id="groupName">&nbsp;</td>
+        </tr>
+        <tr class="scell_noboard">
+          <td>Type:</td>
+          <td>Vendor:</td>
+        </tr>
+        <tr class="scell_bottom">
+          <td class="scell_bottom" id="type">&nbsp;</td>
+          <td class="scell_bottom" id="vendor">&nbsp;</td>
+        </tr>
+        <tr>
+          <td class="scell_noboard">MAC:</td>
+          <td class="scell_noboard">IP:</td>
+        </tr>
+        <tr>
+          <td class="scell_bottom" id="mac">&nbsp;</td>
+          <td class="scell_bottom" id="ip">&nbsp;</td>
+        </tr>
+        <tr>
+          <td class="scell_noboard">BootTime:</td>
+          <td class="scell_noboard">Reboot Reason:</td>
+        </tr>
+        <tr>
+          <td class="scell_bottom" id="bootTime">&nbsp;</td>
+          <td class="scell_bottom" id="lastRebootType">&nbsp;</td>
+        </tr>
+        <tr>
+          <td class="scell_noboard" ">Software Version:</td>
+          <td class="scell_noboard" ">Hardware Version:</td>
+        </tr>
+        <tr>
+          <td class="scell_bottom" id="softwareVersion">&nbsp;</td>
+          <td class="scell_bottom" id="hardwareVersion">&nbsp;</td>
+        </tr>
+        <tr>
+          <td class="scell_noboard" >Last Report Time:</td>
+          <td class="scell_noboard" >Last Update Time:</td>
+        </tr>
+      <tr>
+          <td class="scell_bottom" id="reportTime">&nbsp;</td>
+          <td class="scell_bottom" id="updateTime">&nbsp;</td>
+      </tr>
+    </table>
+      <img src="images/AR502EGRc-Lc.png" width="500" height="250" class="device_pp" />
+  </div>
+  <div class="device_geo">
+    <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="40%"><h3>Position</h3></td>
+        <td width="60%" id="position">&nbsp;</td>
+      </tr>
+    </table>
+ 
+    <hr />
+  <img src="images/2017-04-27_164941.png" width="950" height="480" />  </div>
+</div>
+
+
+<script>
+$(function(){ 
+	var tt ="${param.esn}" ;
+	//var tt = $.getUrlParam('esn');
+
+	$.getJSON("gateway/listid?esn=${param.esn}",
+		function(data){
+			if(data.status != 200){
+				alert("get data fail!");
+				return;
+			}
+			addDeviceInfo(data.data);
+		  //  $.each(info, function(i,item){
+		   // $("<img/>").attr("src", item.media.m).appendTo("#images");
+		    //if ( i == 3 ) return false;
+		//});
+	}); 
+ 
+}); 
+
+function addDeviceInfo(info){
+	// fill position;
+	$("#position").text(info.position);
+	$("#deviceName").text(info.deviceName);
+	$("#groupName").text(info.groupName);	
+	$("#type").text(info.type);	
+	$("#vendor").text(info.vendor);	
+	$("#mac").text(info.mac);	
+	$("#ip").text(info.ip);	
+	$("#bootTime").text(info.bootTime);	
+	$("#lastRebootType").text(info.lastRebootType);	
+	$("#softwareVersion").text(info.softwareVersion);	
+	$("#hardwareVersion").text(info.hardwareVersion);	
+	$("#reportTime").text(info.reportTime);	
+	$("#updateTime").text(info.updateTime);
+
+
+	
+};
+</script>
+</body>

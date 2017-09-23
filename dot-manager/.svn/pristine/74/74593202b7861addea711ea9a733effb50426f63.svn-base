@@ -1,0 +1,11 @@
+package com.dot.service;
+
+import com.dot.pojo.TbNode;
+
+import dot.com.common.pojo.EUDataGridResult;
+import dot.com.common.result.TaotaoResult;
+
+public interface NodeService {
+	TaotaoResult addSensorNode(TbNode item);
+	EUDataGridResult getSensorNodeList(Integer page,Integer rows) ;	
+}

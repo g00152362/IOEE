@@ -1,0 +1,7 @@
+com\dot\mapper\TbGatewayInfoMapper.class
+com\dot\mapper\TbNodeMapper.class
+com\dot\mapper\TbUserSettingMapper.class
+com\dot\mapper\TbSensorCatMapper.class
+com\dot\mapper\TbDeviceModelMapper.class
+com\dot\mapper\TbDeviceGroupMapper.class
+com\dot\mapper\TbSensorDataMapper.class

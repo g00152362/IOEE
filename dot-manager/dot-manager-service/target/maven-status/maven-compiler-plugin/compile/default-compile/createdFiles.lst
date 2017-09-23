@@ -1,0 +1,14 @@
+com\dot\service\impl\DeviceGroupServiceImpl.class
+com\dot\service\SensorDataService.class
+com\dot\service\GatewayInfoService.class
+com\dot\service\impl\DeviceModelServiceImpl.class
+com\dot\service\UserSettingService.class
+com\dot\service\NodeService.class
+com\dot\service\impl\SensorCatServiceImpl.class
+com\dot\service\impl\GatewayInfoServiceImpl.class
+com\dot\service\impl\NodeServiceImpl.class
+com\dot\service\SensorCatService.class
+com\dot\service\DeviceModelService.class
+com\dot\service\impl\SensorDataServiceImpl.class
+com\dot\service\impl\UserSettingServiceImpl.class
+com\dot\service\DeviceGroupService.class

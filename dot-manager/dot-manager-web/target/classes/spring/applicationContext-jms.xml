@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xmlns:jee="http://www.springframework.org/schema/jee" 	
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://activemq.apache.org/schema/core http://activemq.apache.org/schema/core/activemq-core.xsd
+        http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd">
+ <!-- JMS start guojun -->
+ 	<!-- jms的连接工厂，在容器（tomcat）中实现 ，此处根据jndi命名规范去寻址-->
+    <jee:jndi-lookup id="connectionFactory" jndi-name="myJMS/ConnectionFactory"/> 
+    <!-- jms的消息队列，在容器（tomcat）中实现 ，此处根据jndi命名规范去寻址-->
+    <jee:jndi-lookup id="messageQueue" jndi-name="myJMS/MessageQueue"/>  
+    <!-- jms的topic，在容器（tomcat）中实现 ，此处根据jndi命名规范去寻址-->
+    <jee:jndi-lookup id="gatewayInfoTopic" jndi-name="myJMS/gatewayInfoTopic"/>  
+    <jee:jndi-lookup id="gatewayReport" jndi-name="myJMS/gatewayReport"/>
+    <jee:jndi-lookup id="sensorData" jndi-name="myJMS/sensorData"/>
+     
+    <!-- Spring JMS Template -->
+     <bean id= "jmsTemplate" class = "org.springframework.jms.core.JmsTemplate"
+           lazy-init ="true" >
+           <property name= "connectionFactory" ref ="connectionFactory" ></property>
+           <property name= "defaultDestination" ref = "messageQueue"></property >
+     </bean>
+
+	<bean id="messageSender" class="com.dot.jms.MessageSender">
+		<property name="jmsTemplate" ref="jmsTemplate"></property>
+	</bean>
+	<bean id="receiveMessageListener"
+		class="com.dot.jms.ReceiveMessageListener"></bean>
+		
+	<bean id="gatewayInfoTopicListener"
+		class="com.dot.jms.gatewayDeviceInfoTopicListener"></bean>
+		
+	<bean id="gatewayReportListener"
+		class="com.dot.jms.gatewayReportListener"></bean>	
+		
+	<bean id="sensorDataListener"
+		class="com.dot.jms.sensorDataListener"></bean>				
+				
+ 	<bean id="listenerContainer"
+		class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+		<property name="connectionFactory" ref="connectionFactory"></property>
+		<property name="destination" ref="messageQueue"></property>
+		<property name="messageListener" ref="receiveMessageListener"></property>
+  		<property name= "autoStartup" value = "true" />  
+	</bean>
+	<!-- deviceInfo -->
+ 	<bean id="listenerTopicContainer"
+		class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+		<property name="connectionFactory" ref="connectionFactory"></property>
+		<property name="destination" ref="gatewayInfoTopic"></property>
+		<property name="messageListener" ref="gatewayInfoTopicListener"></property>
+ 		<property name= "autoStartup" value = "true" />  
+	</bean>	
+	
+ 	<bean id="listenerReportContainer"
+		class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+		<property name="connectionFactory" ref="connectionFactory"></property>
+		<property name="destination" ref="gatewayReport"></property>
+		<property name="messageListener" ref="gatewayReportListener"></property>
+ 		<property name= "autoStartup" value = "false" />  
+	</bean>		
+	
+	<bean id="sensorDataListenerContainer"
+		class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+		<property name="connectionFactory" ref="connectionFactory"></property>
+		<property name="destination" ref="sensorData"></property>
+		<property name="messageListener" ref="sensorDataListener"></property>
+ 		<property name= "autoStartup" value = "true" />  
+	</bean>			
+	</beans>
+        <!-- JMS end -->

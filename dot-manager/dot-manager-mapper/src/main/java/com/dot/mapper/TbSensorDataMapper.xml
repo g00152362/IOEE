@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dot.mapper.TbSensorDataMapper" >
+  <resultMap id="BaseResultMap" type="com.dot.pojo.TbSensorData" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <id column="mac" property="mac" jdbcType="VARCHAR" />
+    <id column="type_id" property="typeId" jdbcType="BIGINT" />
+    <result column="date" property="date" jdbcType="TIMESTAMP" />
+    <result column="timestamp" property="timestamp" jdbcType="BIGINT" />
+    <result column="value" property="value" jdbcType="REAL" />
+    <result column="value1" property="value1" jdbcType="REAL" />
+    <result column="value2" property="value2" jdbcType="REAL" />
+    <result column="value3" property="value3" jdbcType="REAL" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, mac, type_id, date, timestamp, value, value1, value2, value3
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.dot.pojo.TbSensorDataExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tb_sensor_data
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.dot.pojo.TbSensorDataKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_sensor_data
+    where id = #{id,jdbcType=BIGINT}
+      and mac = #{mac,jdbcType=VARCHAR}
+      and type_id = #{typeId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.dot.pojo.TbSensorDataKey" >
+    delete from tb_sensor_data
+    where id = #{id,jdbcType=BIGINT}
+      and mac = #{mac,jdbcType=VARCHAR}
+      and type_id = #{typeId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.dot.pojo.TbSensorDataExample" >
+    delete from tb_sensor_data
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.dot.pojo.TbSensorData" >
+    insert into tb_sensor_data (id, mac, type_id, 
+      date, timestamp, value, 
+      value1, value2, value3)
+    values (#{id,jdbcType=BIGINT}, #{mac,jdbcType=VARCHAR}, #{typeId,jdbcType=BIGINT}, 
+      #{date,jdbcType=TIMESTAMP}, #{timestamp,jdbcType=BIGINT}, #{value,jdbcType=REAL}, 
+      #{value1,jdbcType=REAL}, #{value2,jdbcType=REAL}, #{value3,jdbcType=REAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.dot.pojo.TbSensorData" >
+    insert into tb_sensor_data
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="mac != null" >
+        mac,
+      </if>
+      <if test="typeId != null" >
+        type_id,
+      </if>
+      <if test="date != null" >
+        date,
+      </if>
+      <if test="timestamp != null" >
+        timestamp,
+      </if>
+      <if test="value != null" >
+        value,
+      </if>
+      <if test="value1 != null" >
+        value1,
+      </if>
+      <if test="value2 != null" >
+        value2,
+      </if>
+      <if test="value3 != null" >
+        value3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="mac != null" >
+        #{mac,jdbcType=VARCHAR},
+      </if>
+      <if test="typeId != null" >
+        #{typeId,jdbcType=BIGINT},
+      </if>
+      <if test="date != null" >
+        #{date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="timestamp != null" >
+        #{timestamp,jdbcType=BIGINT},
+      </if>
+      <if test="value != null" >
+        #{value,jdbcType=REAL},
+      </if>
+      <if test="value1 != null" >
+        #{value1,jdbcType=REAL},
+      </if>
+      <if test="value2 != null" >
+        #{value2,jdbcType=REAL},
+      </if>
+      <if test="value3 != null" >
+        #{value3,jdbcType=REAL},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.dot.pojo.TbSensorDataExample" resultType="java.lang.Integer" >
+    select count(*) from tb_sensor_data
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update tb_sensor_data
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.mac != null" >
+        mac = #{record.mac,jdbcType=VARCHAR},
+      </if>
+      <if test="record.typeId != null" >
+        type_id = #{record.typeId,jdbcType=BIGINT},
+      </if>
+      <if test="record.date != null" >
+        date = #{record.date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.timestamp != null" >
+        timestamp = #{record.timestamp,jdbcType=BIGINT},
+      </if>
+      <if test="record.value != null" >
+        value = #{record.value,jdbcType=REAL},
+      </if>
+      <if test="record.value1 != null" >
+        value1 = #{record.value1,jdbcType=REAL},
+      </if>
+      <if test="record.value2 != null" >
+        value2 = #{record.value2,jdbcType=REAL},
+      </if>
+      <if test="record.value3 != null" >
+        value3 = #{record.value3,jdbcType=REAL},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update tb_sensor_data
+    set id = #{record.id,jdbcType=BIGINT},
+      mac = #{record.mac,jdbcType=VARCHAR},
+      type_id = #{record.typeId,jdbcType=BIGINT},
+      date = #{record.date,jdbcType=TIMESTAMP},
+      timestamp = #{record.timestamp,jdbcType=BIGINT},
+      value = #{record.value,jdbcType=REAL},
+      value1 = #{record.value1,jdbcType=REAL},
+      value2 = #{record.value2,jdbcType=REAL},
+      value3 = #{record.value3,jdbcType=REAL}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dot.pojo.TbSensorData" >
+    update tb_sensor_data
+    <set >
+      <if test="date != null" >
+        date = #{date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="timestamp != null" >
+        timestamp = #{timestamp,jdbcType=BIGINT},
+      </if>
+      <if test="value != null" >
+        value = #{value,jdbcType=REAL},
+      </if>
+      <if test="value1 != null" >
+        value1 = #{value1,jdbcType=REAL},
+      </if>
+      <if test="value2 != null" >
+        value2 = #{value2,jdbcType=REAL},
+      </if>
+      <if test="value3 != null" >
+        value3 = #{value3,jdbcType=REAL},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+      and mac = #{mac,jdbcType=VARCHAR}
+      and type_id = #{typeId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dot.pojo.TbSensorData" >
+    update tb_sensor_data
+    set date = #{date,jdbcType=TIMESTAMP},
+      timestamp = #{timestamp,jdbcType=BIGINT},
+      value = #{value,jdbcType=REAL},
+      value1 = #{value1,jdbcType=REAL},
+      value2 = #{value2,jdbcType=REAL},
+      value3 = #{value3,jdbcType=REAL}
+    where id = #{id,jdbcType=BIGINT}
+      and mac = #{mac,jdbcType=VARCHAR}
+      and type_id = #{typeId,jdbcType=BIGINT}
+  </update>
+</mapper>

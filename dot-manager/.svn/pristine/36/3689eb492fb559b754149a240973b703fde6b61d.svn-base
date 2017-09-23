@@ -1,0 +1,106 @@
+@CHARSET "UTF-8";
+
+.scell_noboard {
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	color: #666;
+}
+.scell_bottom {
+	border-bottom-width: thin;
+	border-bottom-style: solid;
+	border-bottom-color: #999;
+}
+
+.device_info {
+	display: inline;
+	width: 100%;
+	position: absolute;
+	left: 0px;
+	float: left;
+	align: right;
+	height: 900px;
+}
+.basic_info {
+	position: absolute;
+	width: 45%;
+	padding-top: 0px;
+	display: inline;
+}
+.device_pp {
+	text-align: center;
+	display: inline;
+}
+
+.device_geo{
+	display: inline;
+	position: relative;
+	left: 0px;
+	float: right;
+	align: right;
+	margin-right: 20px;
+	width: 50%;
+	height: 550px;
+}
+
+.mapHeader
+{
+position: relative; 
+height: 50px; 
+width:95%;
+border: 0; 
+float:left;
+margin-top:15px;
+margin-left:40px;
+
+background: rgb(255,255,255);
+filter: Alpha(Opacity=10, Style=0);
+ opacity: 0.70;
+ z-index:30;
+
+} 
+
+.showInfoWindow
+{
+position: relative; 
+height:400px; 
+width:400px;
+border: 0; 
+float:right;
+margin-top:15px;
+margin-left:40px;
+margin-right:5%;	
+background: rgb(255,255,255);
+filter: Alpha(Opacity=10, Style=0);
+ opacity: 0.70;
+ z-index:30;
+
+} 
+
+
+
+#allmap
+{
+	
+position: fixed;
+float:left;
+width:95%;
+height:95%;
+margin-top:10px;
+margin-left:40px;
+}
+
+.devicinfo {  
+    padding: 15px;
+    color: rgba(0, 0, 0, 0.4);
+    position: relative;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    z-index: 0;
+
+ background: #1296db;
+ 
+} 
+
+

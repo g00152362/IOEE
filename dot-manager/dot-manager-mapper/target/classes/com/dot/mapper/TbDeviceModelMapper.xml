@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dot.mapper.TbDeviceModelMapper" >
+  <resultMap id="BaseResultMap" type="com.dot.pojo.TbDeviceModel" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="OS" property="os" jdbcType="VARCHAR" />
+    <result column="processor" property="processor" jdbcType="VARCHAR" />
+    <result column="core_number" property="coreNumber" jdbcType="INTEGER" />
+    <result column="memory" property="memory" jdbcType="INTEGER" />
+    <result column="storage" property="storage" jdbcType="INTEGER" />
+    <result column="icon" property="icon" jdbcType="VARCHAR" />
+    <result column="photo" property="photo" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, description, OS, processor, core_number, memory, storage, icon, photo
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.dot.pojo.TbDeviceModelExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tb_device_model
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_device_model
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from tb_device_model
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.dot.pojo.TbDeviceModelExample" >
+    delete from tb_device_model
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.dot.pojo.TbDeviceModel" >
+    insert into tb_device_model (id, description, OS, 
+      processor, core_number, memory, 
+      storage, icon, photo
+      )
+    values (#{id,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{os,jdbcType=VARCHAR}, 
+      #{processor,jdbcType=VARCHAR}, #{coreNumber,jdbcType=INTEGER}, #{memory,jdbcType=INTEGER}, 
+      #{storage,jdbcType=INTEGER}, #{icon,jdbcType=VARCHAR}, #{photo,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.dot.pojo.TbDeviceModel" >
+    insert into tb_device_model
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+      <if test="os != null" >
+        OS,
+      </if>
+      <if test="processor != null" >
+        processor,
+      </if>
+      <if test="coreNumber != null" >
+        core_number,
+      </if>
+      <if test="memory != null" >
+        memory,
+      </if>
+      <if test="storage != null" >
+        storage,
+      </if>
+      <if test="icon != null" >
+        icon,
+      </if>
+      <if test="photo != null" >
+        photo,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="os != null" >
+        #{os,jdbcType=VARCHAR},
+      </if>
+      <if test="processor != null" >
+        #{processor,jdbcType=VARCHAR},
+      </if>
+      <if test="coreNumber != null" >
+        #{coreNumber,jdbcType=INTEGER},
+      </if>
+      <if test="memory != null" >
+        #{memory,jdbcType=INTEGER},
+      </if>
+      <if test="storage != null" >
+        #{storage,jdbcType=INTEGER},
+      </if>
+      <if test="icon != null" >
+        #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="photo != null" >
+        #{photo,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.dot.pojo.TbDeviceModelExample" resultType="java.lang.Integer" >
+    select count(*) from tb_device_model
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update tb_device_model
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.description != null" >
+        description = #{record.description,jdbcType=VARCHAR},
+      </if>
+      <if test="record.os != null" >
+        OS = #{record.os,jdbcType=VARCHAR},
+      </if>
+      <if test="record.processor != null" >
+        processor = #{record.processor,jdbcType=VARCHAR},
+      </if>
+      <if test="record.coreNumber != null" >
+        core_number = #{record.coreNumber,jdbcType=INTEGER},
+      </if>
+      <if test="record.memory != null" >
+        memory = #{record.memory,jdbcType=INTEGER},
+      </if>
+      <if test="record.storage != null" >
+        storage = #{record.storage,jdbcType=INTEGER},
+      </if>
+      <if test="record.icon != null" >
+        icon = #{record.icon,jdbcType=VARCHAR},
+      </if>
+      <if test="record.photo != null" >
+        photo = #{record.photo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update tb_device_model
+    set id = #{record.id,jdbcType=VARCHAR},
+      description = #{record.description,jdbcType=VARCHAR},
+      OS = #{record.os,jdbcType=VARCHAR},
+      processor = #{record.processor,jdbcType=VARCHAR},
+      core_number = #{record.coreNumber,jdbcType=INTEGER},
+      memory = #{record.memory,jdbcType=INTEGER},
+      storage = #{record.storage,jdbcType=INTEGER},
+      icon = #{record.icon,jdbcType=VARCHAR},
+      photo = #{record.photo,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dot.pojo.TbDeviceModel" >
+    update tb_device_model
+    <set >
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="os != null" >
+        OS = #{os,jdbcType=VARCHAR},
+      </if>
+      <if test="processor != null" >
+        processor = #{processor,jdbcType=VARCHAR},
+      </if>
+      <if test="coreNumber != null" >
+        core_number = #{coreNumber,jdbcType=INTEGER},
+      </if>
+      <if test="memory != null" >
+        memory = #{memory,jdbcType=INTEGER},
+      </if>
+      <if test="storage != null" >
+        storage = #{storage,jdbcType=INTEGER},
+      </if>
+      <if test="icon != null" >
+        icon = #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="photo != null" >
+        photo = #{photo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dot.pojo.TbDeviceModel" >
+    update tb_device_model
+    set description = #{description,jdbcType=VARCHAR},
+      OS = #{os,jdbcType=VARCHAR},
+      processor = #{processor,jdbcType=VARCHAR},
+      core_number = #{coreNumber,jdbcType=INTEGER},
+      memory = #{memory,jdbcType=INTEGER},
+      storage = #{storage,jdbcType=INTEGER},
+      icon = #{icon,jdbcType=VARCHAR},
+      photo = #{photo,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>
