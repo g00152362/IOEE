@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+	<div class="panel panel-default" "><!-- to apply shadow add class "panel-shadow" -->
+	<!-- panel head -->
+	<div class="panel-heading">
+		<div class="panel-title">Setting</div>
+		<div class="panel-options">
+	    	<a  data-toggle="collapse" data-parent="#accordion"  href="#pl_setting"><i class="entypo-down-open"></i></a>
+		 
+		</div>
+	</div>	
+			
+	<!-- panel body -->
+<div id="pl_setting" class="panel-collapse collapse"  aria-expanded="false">	
+	<div class="panel-body">
+		<form id="sensorChartSettingForm"  role="form" class="form-horizontal"  method="post">    		
+
+	            <div class="row">
+	            <div class="form-group">
+					<div class="col-sm-6">
+	   					<div class="well ">	
+								
+							<div class="radio ">
+								<label>
+									<input type="radio" name="showTypeRadios" id="historyRadio" value="history" checked>History
+								</label>
+							</div>
+							<div class="col-md-offset-1 ">	
+								<div class="controls">
+								 	<div class="input-prepend">
+			                       		<input type="text"  style="width:100%" name="historyTime" id="reservationtime" value="2017/08/01 1:00:00 - 2017/08/01 01:30:00"  class="span4"/>
+          					   		</div>
+           						</div>		
+                   			</div>									
+									
+							<div class="radio ">
+								<label>
+									<input type="radio" name="showTypeRadios" id="realTime" value="realTime">Real Time
+								</label>
+							</div>
+							<div class="form-group">
+								<label for="interval" class="control-label col-sm-3">Refresh interval</label>
+								<div class="input-group col-sm-3 ">
+									<input type="text" class="form-control" name="interval" id="interval" value=100 placeholder=" 100">
+									<span class="input-group-addon">s</span>
+								</div>
+							</div>
+						</div>
+		            </div> <!-- col-sm-6 -->  
+		            
+		             <!-- name must same with database, the value is x_unit,x:s=singel,m=multi  --> 
+		            <div class="col-sm-6">
+			            <div class="well ">
+			            <div class="form-group">
+			
+							<label class="col-sm-12 col-md-offset-1 ">Sensor type:</label>
+							<div class="col-sm-2 col-md-offset-1 ">
+								<div class="checkbox">
+									<input type="checkbox" value='s_C' name="temperature">
+									<label>Temperature</label>
+								</div>									
+								<div class="checkbox ">
+									<input type="checkbox" value='s_lux' name="light">
+									<label>Light</label>
+								</div>
+									
+								<div class="checkbox">
+									<input type="checkbox" value='s_%' name="humidity">
+									<label>Humidity</label>
+								</div>	
+							</div>	
+							<div class="col-sm-2 col-md-offset-1">
+								<div class="checkbox ">
+									<input type="checkbox" value='s_C' name="ir">
+									<label>Ir</label>
+								</div>
+								<div class="checkbox ">
+									<input type="checkbox" value='s_pa' name="pressure">
+									<label>Pressure</label>
+								</div>
+								<div class="checkbox ">
+									<input type="checkbox" value='s_&' name="hall">
+									<label>Hall</label>
+								</div>										
+							</div>
+							<div class="col-sm-2 col-md-offset-1">
+								<div class="checkbox ">
+									<input type="checkbox" value='s_%' name="battery">
+									<label>Battery</label>
+								</div>
+								<div class="checkbox ">
+									<input type="checkbox" value='m_g/s' name="accelerate">
+									<label>Accelerate</label>
+								</div>
+								<div class="checkbox ">
+									<input type="checkbox" value='m_dps' name="gyroscope">
+									<label>Gyroscope</label>
+								</div>										
+							</div>
+			            </div>
+			            </div>
+					</div>
+					</div>
+		        </div> <!--row --> 
+
+
+		        <div class="row"> 
+
+					<div class="form-group">
+			          	<div class="col-sm-2 col-sm-offset-3">
+			                <button type="button" class="btn btn-default"  onclick="onSettingChart()" >Submit</button> 
+			            </div>
+			                
+			            <div class="col-sm-2 col-sm-offset-3">           
+			                <button type="button" class="btn btn-default " onclick="cancelChartSetting()">Cancel</button>
+			            </div>
+			        </div>
+			    </div> <!--row --> 		              
+	    </form>
+ 	                  
+	</div>
+	</div>
+	</div>
+			
+
+
+   <!-- Content Header (Page header) -->
+	<div class="container "  style="width:100%;">
+    	<div class="row">   
+    		<div class="col-md-6 " id="div00">
+				<div id="div0" style="width: 600px;height:300px;"></div>
+			</div>	
+    		<div class="col-md-6"  id="div01">
+				<div id="div1" style="width: 100%;height:300px;"></div>
+			</div>
+ 		</div>
+		<div class="row">  
+			<div class="col-md-6 ">
+				<div id="div2" style="width: 100%;height:300px;"></div>
+			</div>
+			<div class="col-md-6 ">
+				<div id="div3" style="width: 100%;height:300px;"></div>
+			</div>			
+		</div>
+		
+		<div class="row">  
+			<div class="col-md-6 ">
+				<div id="div4" style="width: 100%;height:300px;"></div>
+			</div>
+			<div class="col-md-6 ">
+				<div id="div5" style="width: 100%;height:300px;"></div>
+			</div>			
+		</div>		
+
+		<div class="row">  
+			<div class="col-md-6 ">
+				<div id="div6" style="width: 100%;height:300px;"></div>
+			</div>
+			<div class="col-md-6 ">
+				<div id="div7" style="width: 100%;height:300px;"></div>
+			</div>			
+		</div>	
+				
+		<div class="row">  
+			<div class="col-md-6 ">
+				<div id="div8" style="width: 100%;height:300px;"></div>
+			</div>
+			<div class="col-md-6 ">
+				<div id="div9" style="width: 100%;height:300px;"></div>
+			</div>			
+		</div>	 		
+	 		
+ 	</div>
+ 	<!-- 
+<script src="js/data-chart.js"></script>
+-->
+
+</body>
+</html>

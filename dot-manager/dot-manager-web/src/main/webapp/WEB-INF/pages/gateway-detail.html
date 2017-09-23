@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+	<!-- CSS not work -->
+	<link rel="stylesheet" href="css/gateway-detail.css">
+<body>
+
+	
+<div class="profile-env">
+	<!-- brief information -->
+	<header class="row">
+		<div class="col-sm-2">
+			<a href="#" class="profile-picture">
+				<img src="images/AR.png" class="img-responsive img-circle" />
+			</a>
+		</div>
+		
+		<div class="col-sm-7">
+ 				
+			<ul class="profile-info-sections">
+				<li>
+					<div class="profile-name">
+						<strong>
+							<a href="#"  id="deviceName">&nbsp;</a>
+							<img  id="pic_status" width="14" height="14" src="images/circle_green.png" />
+							<!-- User statuses available classes "is-online", "is-offline", "is-idle", "is-busy" -->						
+							</strong>
+						<span><a href="#" id="status">&nbsp;</a></span>
+					</div>
+				</li>
+				
+				<li>
+					<div class="profile-stat">
+						<h3>64</h3>
+						<span><a href="#">Alert process</a></span>
+					</div>
+				</li>
+				
+				<li>
+					<div class="profile-stat">
+						<h3>1</h3>
+						<span><a href="#">Task running</a></span>
+					</div>
+				</li>
+			</ul>
+		</div>
+		
+		<div class="col-sm-3">
+			
+			<div class="profile-buttons">
+				<a href="#" class="btn btn-default">
+					<i class="entypo-user-add"></i>
+					Command
+				</a>
+				
+				<a href="#" class="btn btn-default">
+					<i class="entypo-mail">Reset</i>
+				</a>
+			</div>
+		</div>
+		
+	</header>
+
+
+ 	<!-- device esn,group,position -->	   
+	<section class="profile-info-tabs">
+		
+		<div class="row">
+			
+			<div class="col-sm-offset-2 col-sm-10">
+				
+				<ul class="my-user-details">
+		                <li >
+		                  Esn: <a><span id="serialNumber" >&nbsp;</span></a>
+		                </li>
+		                <li >
+		                  Group: <a><span id="groupName" >&nbsp;</span></a>
+		                </li>
+		                <li>
+		                  Location: <a ><span id="position">&nbsp;</span></a>
+		                </li>
+		         </ul>            	   
+				
+				
+				<!-- tabs for the profile links -->
+				<ul class="nav nav-tabs">
+					<li class="active"><a href="#profile-info">Profile</a></li>
+					<li><a href="#biography">Alert</a></li>
+					<li><a href="#profile-edit">Task</a></li>
+				</ul>
+				
+			</div>
+			
+		</div>
+		
+	</section>
+	
+		
+
+	<div class="row">
+	<div class="container">
+	<div class=" col-md-4">
+	    <table id="tb_basic_info" class="table table-striped">
+	         <tr class="scell_top" >
+	          <td class="scell_top">Type:</td>
+	          <td class="scell_top">Vendor:</td>
+	        </tr>
+	        <tr class="scell_bottom">
+	          <td class="scell_bottom" id="type">&nbsp;</td>
+	          <td class="scell_bottom" id="vendor">&nbsp;</td>
+	        </tr>
+	        <tr>
+	          <td class="scell_noboard">MAC:</td>
+	          <td class="scell_noboard">IP:</td>
+	        </tr>
+	        <tr>
+	          <td class="scell_bottom" id="mac">&nbsp;</td>
+	          <td class="scell_bottom" id="ip">&nbsp;</td>
+	        </tr>
+	        <tr>
+	          <td class="scell_noboard">BootTime:</td>
+	          <td class="scell_noboard">Reboot Reason:</td>
+	        </tr>
+	        <tr>
+	          <td class="scell_bottom" id="bootTime" >&nbsp;</td>
+	          <td class="scell_bottom" id="lastRebootType">&nbsp;</td>
+	        </tr>
+	        <tr>
+	          <td class="scell_noboard" ">Software Version:</td>
+	          <td class="scell_noboard" ">Hardware Version:</td>
+	        </tr>
+	        <tr>
+	          <td class="scell_bottom" id="softwareVersion">&nbsp;</td>
+	          <td class="scell_bottom" id="hardwareVersion">&nbsp;</td>
+	        </tr>
+	        <tr>
+	          <td class="scell_noboard" >Last Report Time:</td>
+	          <td class="scell_noboard" >Last Update Time:</td>
+	        </tr>
+	      <tr>
+	          <td class="scell_bottom" id="reportTime" >&nbsp;</td>
+	          <td class="scell_bottom" id="updateTime">&nbsp;</td>
+	      </tr>
+	    </table>
+    </div>
+    </div>
+</div>
+
+</div>
+ <!-- 
+<script src="js/gateway-detail.js"></script>
+ -->
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+   <!-- Main content -->
+   <!-- group filter -->
+   
+	<link rel="stylesheet" href="css/gateway-list.css">
+
+		
+		<div class="panel panel-default" data-collapsed="0"><!-- to apply shadow add class "panel-shadow" -->
+	
+			<!-- panel head -->
+			<div class="panel-heading">
+				<div class="panel-title">Group</div>
+				
+				<div class="panel-options">
+					<a href="#" data-toggle="modal" data-target="#selectModal" ><i class="entypo-plus"></i></a>
+					<a href="#" data-rel="collapse"><i class="entypo-down-open"></i></a>
+					<a href="#" data-rel="close"><i class="entypo-cancel"></i></a>
+				</div>
+			</div>
+			
+			<!-- panel body -->
+			<div class="panel-body">
+           		<input type="text" class="input-lg" id="grouptags" >
+				<button type="button" class="btn btn-info" data-toggle="modal" data-target="#selectModal" >Add tags</button>
+ 	                  
+			</div>
+			
+		</div>
+   
+   <!-- -------table list----- -->
+
+   		<!-- tool bar -->
+   	    <div id="toolbar">
+   	    <div class="btn-group">
+	        <button id="new" class="btn btn-Default" onClick="IotLoadFrame('gateway-add.html','js/gateway-add.js')">
+	            <i class="glyphicon glyphicon-plus"></i> New
+	        </button>  
+	        <button id="edit" class="btn btn-Default" onClick="editGateway()">
+	            <i class="glyphicon glyphicon-pencil"></i> Edit
+	        </button>    	
+	        
+	        <button type="button" class="btn btn-Default" data-load-url="devicegroup-select" onClick="addToGroup()"  >
+	            <i class="glyphicon glyphicon-import"></i> Move Group
+	        </button>  	 
+ 	                         
+	        <button id="remove" class="btn btn-danger"  onClick="deleteGateway()">
+	            <i class="glyphicon glyphicon-remove"></i> Delete
+	        </button>
+	        
+	        </div>
+    	</div>
+    	
+    	<div>
+    	
+    	<!-- list table -->
+	    <table id="gatewayList"
+	           data-toolbar="#toolbar"
+	           data-search="true"
+	           data-show-refresh="true"
+	           data-show-toggle="true"
+	           data-show-columns="true"
+	           data-show-export="true"
+	           data-detail-view="false"
+	           data-detail-formatter="detailFormatter"
+	           data-minimum-count-columns="2"
+	           data-show-pagination-switch="true"
+	           data-pagination="true"
+	           data-id-field="serialNumber"
+	           data-page-list="[10, 25, 50, 100, ALL]"
+	           data-show-footer="false"
+	           data-side-pagination="server"
+	           data-toolbar-align="left"
+	           data-url="gateway/list"
+	           data-response-handler="responseHandler">
+	    	</table>    	
+   	  </div>
+  
+<!-- 
+
+	<script src="js/gateway-list.js"></script>
+	 -->
+	</html>
+
+ 

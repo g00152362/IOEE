@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+   <!-- Content Header (Page header) -->
+   <section class="content-header">
+     <h3>
+      <i class="glyphicon glyphicon-pencil"> </i>Modify Device Model
+     </h3>
+   </section>
+   
+      <!-- Main content -->
+   <section class="content">  
+	<div class="container "  style="width:100%;">
+    	<div class="row">   
+    		<div class="col-md-10 col-md-offset-1">
+			<form id="deviceModelEditForm"  role="form" class="form-horizontal"  method="post">    		
+                <div class="form-group">
+	                  <label for="id" class="col-sm-2 control-label">Name:</label>
+	                  <div class="col-sm-8">
+		                    <input type="text" class="form-control" name="id" id="id" placeholder="Name" readonly>
+	                  </div>
+	              </div>  
+                <div class="form-group">
+	                  <label for="os" class="col-sm-2 control-label">OS:</label>
+	                  <div class="col-sm-8">
+		                    <input type="text" class="form-control" name="os" id="os" placeholder="OS">
+	                  </div>
+	              </div>  	
+	              
+                <div class="form-group">
+	                  <label for="processor" class="col-sm-2 control-label">Processor:</label>
+	                  <div class="col-sm-8">
+		                    <input type="text" class="form-control" name="processor" id="processor" placeholder="processor">
+	                  </div>
+	              </div> 	
+	              
+                <div class="form-group">
+	                  <label for="coreNumber" class="col-sm-2 control-label">Core Number:</label>
+	                  <div class="col-sm-8">
+		                    <input type="text" class="form-control" name="coreNumber" id="coreNumber" placeholder="coreNumber">
+	                  </div>
+	              </div> 
+	              
+                <div class="form-group">
+	                  <label for="memory" class="col-sm-2 control-label">Memory:</label>
+	                  <div class="col-sm-4">
+		                    <input type="text" class="form-control" name="memory" id="memory" placeholder="memory">
+	                  </div>	              
+	                  <div class="col-sm-2">
+							<label class="radio-inline">
+							  <input type="radio" name="m_unit" value=1 checked> M
+							</label>
+							<label class="radio-inline">
+							  <input type="radio" name="m_unit"  value=1000> G
+							</label>	                  
+	                  </div>	
+                                  
+	              </div> 	
+	              
+                <div class="form-group">
+	                  <label for="storage" class="col-sm-2 control-label">Storage:</label>
+	                  <div class="col-sm-4">
+		                    <input type="text" class="form-control" name="storage" id="storage" placeholder="storage">
+	                  </div>
+	                  <div class="col-sm-2" >
+							<label class="radio-inline">
+							  <input type="radio" name="s_unit" value=1 checked> M
+							</label>
+							<label class="radio-inline">
+							  <input type="radio" name="s_unit"  value=1000> G
+							</label>	                  
+	                  </div>
+	              </div> 		              	              	                                          
+ 		              	              	                                          
+
+                <div class="form-group">
+ 	                 <label for="description" class="col-sm-2 control-label">Description:</label>
+    	              <div class="col-sm-8">
+        	            <textarea class="form-control" rows="3"name="description" id="description" placeholder="Device description">
+            	        </textarea>
+                	  </div>
+               	</div>
+
+	            <div class="form-group">
+	              	<div class="col-sm-2 col-sm-offset-2">
+	                <button type="submit" class="btn btn-primary"  >Submit</button> 
+	                </div>
+	                
+	                <div class="col-sm-2 col-sm-offset-2">           
+	                <button type="button" class="btn btn-default " onclick="dm_edit.cancelEdit()">Cancel</button>
+	                </div>
+	            </div>
+ 
+	          </form>  		
+   			</div>
+    		<!-- ./COL-MD-* -->
+    	</div>
+    </div>
+
+   </section>
+<!-- 
+<script src="js/devicemodel-edit.js"></script>
+ -->
+ 
+</body>
+</html>
