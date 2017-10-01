@@ -1,4 +1,6 @@
 g_sendTimerId = -1;
+g_navBarName=[];
+
 Date.prototype.format = function(format){ 
     var o =  { 
     "M+" : this.getMonth()+1, //month 
@@ -54,9 +56,49 @@ function formatRebootReason(val,row){
 	
 	}
 }
+function initNavBar(){
+	g_navBarName = new Array();
+	g_navBarName['Home'] = "<a href='#' onClick=\"IotLoadFrame('dash-map.html','js/dash-map.js')\">Home</a>";
+	g_navBarName['Device'] = "<a href='#' onClick=\"IotLoadFrame('gateway-list.html','js/gateway-list.js')\">Device</a>";
+	g_navBarName['Model'] = "<a href='#' onClick=\"IotLoadFrame('devicemodel-list.html','js/devicemodel-list.js')\">Model</a>";
+	g_navBarName['Group'] = "<a href='#' onClick=\"IotLoadFrame('devicegroup-list.html','js/devicegroup-list.js')\">Group</a>";	
+}				
+
+function setNavBar(s){
+	var ul = document.getElementById("navbar_x");	
+	if(ul == null){
+		console.log('can find DOM navbar_x!');
+		return;
+	}
+	
+	var li =null;
+	for(var i=0;i<4;i++){
+		if(i>=s.length){
+			// remove
+			li = document.getElementById("sbar"+i);
+			if(li != null){
+				li.innerHTML = "";
+			}
+		}
+		if(s[i] != null){
+			li = document.getElementById("sbar"+i);
+			if(li == null){
+				li = document.createElement("li");
+		 		li.setAttribute("id", "sbar"+i);
+		 		ul.appendChild(li);				
+			}
+			if(i != s.length-1){
+				li.innerHTML = g_navBarName[ s[i]];
+			}
+			else{
+				// last one
+				li.innerHTML = "<strong>" +  s[i] + "</strong>";
+			}
 				
-
-
+			
+		}		
+	}
+}
 
  function IotLoadFrame(url,script){
 	// 	console.log(url +"__________"+ g_sendTimerId);
@@ -64,21 +106,21 @@ function formatRebootReason(val,row){
 	 		clearInterval (g_sendTimerId);
 	 		g_sendTimerId = -1;
 	 	}
-
-		$( "#content" ).load( url);
-		//debug need notification!!!! after release to change true to improve the time
+		//debug need notification!!!! after release to change true to improve the time	 	
 		$.ajaxSetup({
 			  cache: false
 			});
 		
-		if(script != null){
+		$( "#content" ).load(url,function(){
+			if(script != null){
 
-			$.getScript(script);
-		}
-		else{
-			console.log("error, no js!")
-		}
- 
+				$.getScript(script);
+			}
+			else{
+				console.log("error, no js!")
+			}			
+		});
+
  };
  
  //ERROR CODE PROCESS, multi-lang modify here

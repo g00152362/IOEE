@@ -21,6 +21,9 @@ if(typeof valueType == "undefined"){
 		 ds.$showchart = [];
 		 ds.$chartObj=[];
 		 ds.$form = document.forms['sensorChartSettingForm'];	
+		 
+		var s=["Home","Data"];
+		setNavBar(s);		 
 
 
 
@@ -35,111 +38,7 @@ if(typeof valueType == "undefined"){
             ds.$chartObj[i] = echarts.init(document.getElementById('div'+i));
         }
         loadSetting();
-	/*	
-		var lightChart = echarts.init(document.getElementById('div11'));
-        var humidityChart = echarts.init(document.getElementById('div12'));
-        var accelerateChart = echarts.init(document.getElementById('div21'));
-        var gyroscopeChart = echarts.init(document.getElementById('div22'));     
-        
-        
-        
-          
 
-        // 指定图表的配置项和数据
-        var lightOption = {
-            title: {
-                text: 'light',
-            },
-            yAxis: {
-            	name : 'lux',
-            },
-        };
-        
-      var humidityOption = {
-                title: {
-                    text: 'Humidity',
-                },
-                yAxis: {
-                	name : '%',
-                },
-            }; 
-      var accelerateOption = {
-              title: {
-                  text: 'Accelerate',
-              },
-              yAxis: {
-              	name : 'g/s',
-              },
-          };   
-      
-      var gyroscopeOption = {
-              title: {
-                  text: 'Gyroscope',
-              },
-              yAxis: {
-              	name : 'dps',
-              },
-          };          
-      
-      	lightChart.setOption(commOption);      
-        lightChart.setOption(lightOption);
-        humidityChart.setOption(commOption); 
-        humidityChart.setOption(humidityOption);
-        accelerateChart.setOption(multiOption);      
-        accelerateChart.setOption(accelerateOption);     
-        gyroscopeChart.setOption(multiOption);      
-        gyroscopeChart.setOption(gyroscopeOption);         
-        // tmp data request, time is stamp since 1970:0
-
- 
-        
-        var dd= new Date("2017-09-15 22:05:00");
-        var start = dd.getTime()/1000;
-        var dd1 = new  Date("2017-09-15 22:07:00");
-        var end = dd1.getTime()/1000;
-    	var param = {mac:"12:D2:08:2D:07:98",
-    				 type:'light',
-    				 startTimestamp:start,
-    				 endTimestamp:0
-    				 };
-         postData(lightChart,param,Data,valueType.light);
-         
-         param.type = 'humidity';
-      	 postData(humidityChart,param,valueType.humidity);
-    	
-      	 param.type = 'accelerate';
-         postData(accelerateChart,param,valueType.accelerate);
-        
-         //gyroscope
-     	 param.type = 'gyroscope';
-         postData(gyroscopeChart,param,valueType.gyroscope);         
-         
-    	currTime = end;    
-    	*/   
-/*
-    	g_sendTimerId = setInterval(function () {
-			
-    	//	console.log("g_sendTimerId"+g_sendTimerId);
-		//WRONG!!!!!	
-			var param12 = {mac:"12:D2:08:2D:07:98",
-					 type:'light',
-					 startTimestamp:currTime,
-					 endTimestamp:0};
-	    	currTime =currTime +10;
-
-
-	    //	postNewData(lightChart,param12,true,valueType.light);	
-
-	    	param12.type = 'humidity';
-	   // 	postNewData(humidityChart,param12,false,valueType.humidity);	//		valueType.humidity
-	    	
-	    	param12.type = 'accelerate';
-	    //	postNewData(accelerateChart,param12,false,valueType.accelerate);
-	    	
-	    	param12.type = 'gyroscope';
-	  //  	postNewData(gyroscopeChart,param12,false,valueType.gyroscope);	    	
-	    	
-		}, 2500);*/
 	});
 	
 
@@ -182,14 +81,12 @@ function postData(obj,param,dataArray){
 }
 
 function postNewData(obj,param,bc,num){
-	//console.log(param);
 
 	$.post("sensorData/getdata",param, function(data){
 		if(data.status == 200){
 			//save data
 			if(bc == true)
 			{
-			//console.log( Data[0]);
 				Data[0] =  new Array();
 				for (var i = 0 ;i <data.data.categories.length;i++){
 				
@@ -200,7 +97,6 @@ function postNewData(obj,param,bc,num){
 
 			        Data[0].push(data.data.categories[i]);				
 				}
-				console.log(Data[0]);	
 			}	
 				
 			obj.setOption({
@@ -209,8 +105,7 @@ function postNewData(obj,param,bc,num){
 	 	        }
 	       	 });
 			
-		//	console.log(Data[type]);
-			//console.log(type);
+
 			// td: max the valueNumber is 4,reserver all data queue
 			var seriesArray=new Array();
 			var i = 0;
@@ -220,7 +115,6 @@ function postNewData(obj,param,bc,num){
 		
 					var quenum = 4*num+i+1;
 					Data[quenum] =  new Array();
-				//	console.log(obj1);
 					for(var j = 0; j<obj1.data.length;j++){
 						if(Data[quenum] !=null && Data[quenum].length > 20)
 						{
@@ -230,7 +124,7 @@ function postNewData(obj,param,bc,num){
 					}
 					seriesArray.push({data:Data[quenum]});  //0 is categories;
 			}
-		//	console.log(Data[type]);
+
 			obj.setOption({ series: seriesArray });	
 				
 
@@ -384,11 +278,6 @@ function showSetting(){
 		 var b=form[typeName];
 		 var x = b.value.split('_')[0];
 		 var unit= b.value.split('_')[1];
-	//	 unit = decodeURIComponent(unit,true)
-		 //temp process code???
-		 console.log(unit); 
-	//	 unit = unit.replace("%2525","%");
-	//	 unit = unit.replace("%252F","/");
 
 		 if(x=='s'){
 			 ds.$chartObj[i].setOption(commOption); 

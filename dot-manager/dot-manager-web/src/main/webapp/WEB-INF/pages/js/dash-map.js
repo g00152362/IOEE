@@ -6,6 +6,9 @@ var dashMap = dashMap || {};
 	"use strict";
 	$(document).ready(function()
 	{
+		var s=["Home","Map View"];
+		setNavBar(s);	
+		
 		loadJScript();
 	});
 

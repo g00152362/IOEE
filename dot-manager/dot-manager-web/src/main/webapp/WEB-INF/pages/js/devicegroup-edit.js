@@ -7,6 +7,10 @@ var dg_edit = dg_edit || {};
 	{
 		dg_edit.$form =  $('#deviceGroupEditForm');
 		dg_edit.$id = localStorage['group-id'];
+		
+		var s=["Home","Device","Group","Edit"];
+		setNavBar(s);
+		
 	  	initeditdgform();
 
 	});

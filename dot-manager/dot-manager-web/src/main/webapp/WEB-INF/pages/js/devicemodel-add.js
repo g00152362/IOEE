@@ -6,6 +6,9 @@ var dm_add = dm_add || {};
 	$(document).ready(function()
 	{
 		dm_add.$form =  $('#deviceModelAddForm');
+		
+		var s=["Home","Device","Model","Add"];
+		setNavBar(s);		
 			
 		$.extend(dm_add, {
 

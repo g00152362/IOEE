@@ -7,6 +7,10 @@ var dg_list = dg_list || {};
 	{
 		dg_list.$table =  $('#deviceGroupList');
 		dg_list.$selctions=[];
+		
+		var s=["Home","Device","Group","List"];
+		setNavBar(s);
+		
 		initTable();
 
 	});

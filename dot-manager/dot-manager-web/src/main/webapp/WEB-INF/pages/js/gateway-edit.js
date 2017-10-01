@@ -6,6 +6,10 @@ var gw_edit = gw_edit || {};
 	{
 		gw_edit.$form =  $('#gatewayEditForm');
 		gw_edit.$esn = localStorage['esn'];
+		//set nav bar
+		var s=["Home","Device","Edit"];
+		setNavBar(s);
+		
 		initEdit();
 	
 	});

@@ -7,6 +7,9 @@ var dg_add = dg_add || {};
 	{
 		dg_add.$form =  $('#deviceGroupAddForm');
 
+		var s=["Home","Device","Group","Add"];
+		setNavBar(s);
+
 	  	initform();
 
 	});

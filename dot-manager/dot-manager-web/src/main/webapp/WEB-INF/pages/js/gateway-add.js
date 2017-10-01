@@ -8,6 +8,10 @@ var gw_add = gw_add || {};
 		gw_add.$form =  $('#gatewayAddForm');
     	// use modal_select to know who use select_group;
     	localStorage['modal_select']="new_device";
+    	
+		var s=["Home","Device","Add"];
+		setNavBar(s);
+		
 		validateForm();
 	});
 	

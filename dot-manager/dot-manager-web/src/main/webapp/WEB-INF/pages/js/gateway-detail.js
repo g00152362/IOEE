@@ -7,6 +7,9 @@ var gw_detail = gw_detail || {};
 	{
 		gw_detail.$form =  $('#deviceGroupAddForm');
 		gw_detail.$esn = localStorage['esn'];
+		
+		var s=["Home","Device","Detail"];
+		setNavBar(s);
 
 		initDeviceDetailPage();
 	});

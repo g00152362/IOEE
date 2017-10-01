@@ -8,6 +8,9 @@ var dm_edit = dm_edit || {};
 		dm_edit.$form =  $('#deviceModelEditForm');
 		dm_edit.$modelId =localStorage['Model-id'];
 		
+		var s=["Home","Device","Model","Edit"];
+		setNavBar(s);		
+		
 		
 		$.extend(dm_edit, {
 

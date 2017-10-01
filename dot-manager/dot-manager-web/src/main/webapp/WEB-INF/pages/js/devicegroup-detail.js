@@ -8,6 +8,9 @@ var dg_detail = dg_detail || {};
 		dg_detail.$table =  $('#gatewayListBygroupName');
 		
 		dg_detail.$name= localStorage['group_name'];
+		
+		var s=["Home","Device","Group","Detail"];
+		setNavBar(s);		
 
 		initGroupInfo();
 		initTable();

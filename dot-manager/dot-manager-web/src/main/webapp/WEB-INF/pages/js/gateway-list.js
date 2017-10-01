@@ -15,6 +15,10 @@ var gw_list = gw_list || {};
 		localStorage['esn'] = "";
 		localStorage['group_name'] = "";
 		
+		//set nav bar
+		var s=["Home","Device","List"];
+		setNavBar(s);
+		
 		// init group tag
 		//http://blog.csdn.net/qq_15096707/article/details/51746968 
 		gw_list.tagsinput = $('#grouptags').tagsinput({

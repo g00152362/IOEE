@@ -7,6 +7,9 @@ var dm_list = dm_list || {};
 	{
 		dm_list.$table =  $('#deviceModelList');
 		dm_list.$selctions=[];
+		
+		var s=["Home","Device","Model","List"];
+		setNavBar(s);		
 
 		
 		$.extend(dm_list, {
