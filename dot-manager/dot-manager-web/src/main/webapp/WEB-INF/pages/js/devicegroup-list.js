@@ -21,7 +21,7 @@ var dg_list = dg_list || {};
 	function initTable() {
 		dg_list.$table.bootstrapTable({
 			dataField: "rows",
-			height: getHeight(),
+	//		height: getHeight(),
 	
 			columns: [
 			 {

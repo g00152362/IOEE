@@ -11,6 +11,36 @@ var dm_add = dm_add || {};
 		setNavBar(s);		
 			
 		$.extend(dm_add, {
+			/*
+			 * upload the picture 
+			 */
+			uploadFile:function(){
+				var fileName = $('#photofile').val();
+				if(fileName == null ||fileName =="" ){
+					alert('please select a picture!');
+					return;
+				}
+				$.ajaxFileUpload({
+					url: 'deviceModel/fileupload',
+					secureuri:false,
+					fileElementId : 'photofile',
+					dataType :  'text',
+					success : function(data){
+						if(data != null){
+							var dataset = $.parseJSON(data);
+							var urls='http://'+window.location.host+'/'+dataset.fileName;
+							var obj = document.getElementById("pic_device");
+							obj.src =urls;
+							obj = document.getElementById("photo");
+							obj.value=dataset.fileName;
+						}
+					},
+				
+					
+				});
+				
+				
+			},
 
 			/*
 			 *  submit the edit form process
@@ -23,7 +53,8 @@ var dm_add = dm_add || {};
 				unit = $('input:radio[name="m_unit"]:checked').val();
 				v = $('#memory').val();
 				$('#memory').val(unit * v );
-				
+				//$('#photo').val(dm_add.$filedir);
+			
 	        	$.post("deviceModel/add",dm_add.$form.serialize(), function(data){
         			if(data.status == 200){
         				IotLoadFrame('devicemodel-list.html','js/devicemodel-list.js');

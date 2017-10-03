@@ -4,7 +4,7 @@
    <!-- Content Header (Page header) -->
    <section class="content-header">
      <h3>
-       <i class="glyphicon glyphicon-plus"></i> New Device Modal
+       <i class="glyphicon glyphicon-plus"></i> New Device Model
      </h3>
    </section>
    
@@ -76,9 +76,15 @@
 					<div class="form-group">
 						<label for="pic" class="col-sm-2 control-label">Photo:</label>
 						
-						<div class="col-sm-6">
-							<input type="file" class="form-control " id="photo" >
-							<input type="button" classify="exampleDataFile" action="mvc/attachment/add" value="Upload" style=""/>  
+						<div class="col-sm-4">
+							<input type="file" class="form-control " id="photofile" name="photofile">
+							<input type="hidden" class="form-control " id="photo" name="photo">
+						</div>
+						<div class="col-sm-2"> 
+							<button type="button" class="btn btn-default " onclick="dm_add.uploadFile()">Upload</button>
+						</div>
+						<div class="col-sm-4">
+							<img  id="pic_device" width="80" height="40" />
 						</div>
 					</div>	                            	              	                                          
 

@@ -44,21 +44,20 @@ var gw_list = gw_list || {};
     function initTable() {
     	gw_list.$table.bootstrapTable({
    	     dataField: "rows",
-         height: getHeight(),
+    //     height: getHeight(),
 
      columns: [
          {
              field: "ck",            	 
              checkbox: true,
-             valign: 'middle' ,  
-             align:'center',             
+        
 
          },
          {
              title: "Name",
              field: "deviceName",
              width: 180,
-             valign: 'middle',             
+           
  //            editable: true
          },
          {
@@ -67,7 +66,7 @@ var gw_list = gw_list || {};
              width: 180,
              formatter:'deviceEsnFormat',
              sortable: true,
-             valign: 'middle',
+
              titleTooltip: "esn"
          },
          {
@@ -75,7 +74,7 @@ var gw_list = gw_list || {};
              title: "Status",
              width: 150,
              sortable: true,
-             valign: 'middle',             
+            
              formatter:'formatStatus'
            },         
          {
@@ -88,7 +87,7 @@ var gw_list = gw_list || {};
           {
               field: "type",
               title: "Model",
-              valign: 'middle',              
+            
               sortable: true,
 //              editable: true,              
                width: 100
@@ -96,13 +95,13 @@ var gw_list = gw_list || {};
            {
                field: "position",
                title: "Location",
-               valign: 'middle',               
+        
 //               editable: true,                   
                   width:300
             },                    
             {
                 field: "softwareVersion",
-                valign: 'middle',                
+             
                 title: "Software",
                 width: 60
              }      
@@ -140,14 +139,14 @@ var gw_list = gw_list || {};
 	function formatStatus(value,row,index)
 	{
  		if(value == 1){
- 			return "<span style=\"45px;color:#5ECC49;\">\&#8226</span>"+"<span style=\";\">Online</span>";
+ 			return "<i style=\"color:#5ECC49;\" class='entypo-record'></i>Online";
  		}
  		else if(value == 0){
- 			return "<span style=\"display:table-cell;vertical-align:middle;height:45px;color:#AAAAAA;font-size:40px;\">\&#8226</span>"+"<span style=\"display:table-cell;vertical-align:middle;height:45px;\">Offline</span>"; 			
+ 			return "   <i class='entypo-record'></i>Offline"; 			
  			
  		}
  		else if(value == 2){
- 			return "<span style=\"display:table-cell;vertical-align:middle;height:45px;color:#AAAAAA;font-size:40px;\">\&#8226</span>"+"<span style=\"display:table-cell;vertical-align:middle;height:45px;\">unregistered</span>";
+ 			return " <i style=\"color:#EE4749;\" class='entypo-record'></i>unregistered";
  		}	 		
  		else{
  			return "unKonw";

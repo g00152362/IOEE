@@ -71,7 +71,7 @@ var dm_list = dm_list || {};
 	function initTable() {
 		dm_list.$table.bootstrapTable({
 			dataField: "rows",
-			height: getHeight(),
+		//	height: getHeight(),
 	
 			columns: [
 			 {
