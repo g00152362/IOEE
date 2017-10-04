@@ -1,6 +1,8 @@
 package com.dot.controller;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -87,5 +89,22 @@ public class DeviceGroupController {
 		return result;
 
 	}
+	
+	@RequestMapping("/pages/deviceGroup/listallname")
+	@ResponseBody
+	// page 和 rows 要和请求中一致
+	public List<String> getDeviceGroupListAllName(){
+		//List<TbDeviceGroup> list =(List<TbDeviceGroup>) item.getRows();
+		//List<String,String> newlist = new List<String,String> ;
+		/*
+		for(int i=0;i<list.size();i++)
+		{
+			
+		}
+		*/
+		List<String> list = itemService.getAllDeviceGroupNameList();
+
+		return list;
+	}		
 		
 }

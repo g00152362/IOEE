@@ -87,6 +87,10 @@ public class GatewayInfoServiceImpl implements GatewayInfoService {
 	public int caluStatus(TbGatewayInfo item){
 		//get current time
 		Date cur = new Date();
+		// NEW DEVICE
+		if(item == null){
+			return 2;
+		}
 		Date rpt = item.getReportTime();
 
 		if(rpt == null )
@@ -145,8 +149,10 @@ public class GatewayInfoServiceImpl implements GatewayInfoService {
 	public TbGatewayInfo getGatewayBySeriesNumber(String esn) {
 		// TODO Auto-generated method stub
 		TbGatewayInfo item = itemMapper.selectByPrimaryKey(esn);
-		
-		item.setStatus(caluStatus(item));
+		if(item != null)
+		{
+			item.setStatus(caluStatus(item));
+		}
 
 		return item;
 	}

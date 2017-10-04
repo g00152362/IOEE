@@ -27,4 +27,6 @@ public interface TbDeviceGroupMapper {
     int updateByPrimaryKeySelective(TbDeviceGroup record);
 
     int updateByPrimaryKey(TbDeviceGroup record);
+    
+    List<String> selectAllGroupName();
 }

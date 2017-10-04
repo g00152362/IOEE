@@ -21,25 +21,27 @@
 	<link rel="stylesheet" href="assets/css/neon-forms.css">
 	<link rel="stylesheet" href="assets/css/custom.css">
 	<link rel="stylesheet" href="assets/css/skins/white.css">
-	
+	<link rel="stylesheet" href="assets/js/select2/select2-bootstrap.css">
+	<link rel="stylesheet" href="assets/js/select2/select2.css">	
 	
 	<!-- add bootstrap table css -->
 	<link rel="stylesheet" href="assets/js/bootstrap-table/bootstrap-table.min.css">
 	<link rel="stylesheet" href="assets/js/tag-input/bootstrap-tagsinput.css">
 	<link rel="stylesheet" href="assets/js/daterangepicker/daterangepicker-bs3.css">
-	
+
 	
 
+
 	<script src="assets/js/jquery-1.11.0.min.js"></script>
+
+	
 	<!-- todo add by myself -->
 	<script src="js/iotCommon.js"></script>
 	
 </head>
 <body class="page-body skin-white">
 
-
 <div class="page-container">	
-	
 	<div class="sidebar-menu" id="sidebar-menu">
 			<div class="sidebar-menu-inner">			
 					<header class="logo-env">
@@ -74,12 +76,12 @@
 						<li class="opened active">
 							<a href="index.html">
 								<i class="entypo-gauge"></i>
-								<span>Dashboard</span>
+								<span>监控</span>
 							</a>
 							<ul>
 								<li>
 									<a  href="#" onClick="IotLoadFrame('dash-map.html','js/dash-map.js')">
-										<span>Map View</span>
+										<span>地图视图</span>
 									</a>
 								</li>
 							</ul>
@@ -87,22 +89,22 @@
 						<li>
 							<a href="#">			
 								<i class="entypo-layout"></i>
-								<span>Devices</span>
+								<span>设备</span>
 							</a>
 							<ul>
 								<li>
 									<a  href="#" onClick="IotLoadFrame('gateway-list.html','js/gateway-list.js')">
-										<span>Device</span>
+										<span>设备</span>
 									</a>
 								</li>
 								<li>
 									<a  href="#" onClick="IotLoadFrame('devicegroup-list.html','js/devicegroup-list.js')">
-										<span>Group</span>
+										<span>设备组</span>
 									</a>
 								</li>
 								<li>
 									<a href="#" onClick="IotLoadFrame('devicemodel-list.html','js/devicemodel-list.js')">
-										<span>Model</span>
+										<span>设备类型</span>
 									</a>
 								</li>
 							</ul>
@@ -110,34 +112,34 @@
 						<li>
 							<a  href="#" onClick="IotLoadFrame('data-chart.html','js/data-chart.js')">
 								<i class="entypo-monitor"></i>
-								<span>Data</span>
+								<span>数据</span>
 							</a>
 						</li>
 						
 						<li>
 							<a href="mailbox.html">
 								<i class="entypo-attention"></i>
-								<span>Alert</span>
+								<span>告警</span>
 								<span class="badge badge-secondary">8</span>
 							</a>
 						</li>
 						<li>
 							<a href="mailbox.html">
 								<i class="entypo-list"></i>
-								<span>Task</span>
+								<span>任务</span>
 								<span class="badge badge-success">3</span>
 							</a>
 						</li>			
 						<li>
 							<a href="mailbox.html">
 								<i class="entypo-doc-text"></i>
-								<span>Repository</span>
+								<span>仓库</span>
 							</a>
 						</li>			
 						<li>
 							<a href="mailbox.html">
 								<i class="entypo-box"></i>
-								<span>Policy</span>
+								<span>策略</span>
 							</a>
 						</li>
 					</ul>
@@ -158,6 +160,7 @@
 </div>
 
 <script type="text/javascript" > 	
+
 //IotLoadFrame('devicemodel-list.html');
 //IotLoadFrame('gateway-list.html');
 
@@ -167,7 +170,8 @@
 	//IotLoadFrame('dash-map.html','js/dash-map.js');
 	
 		//IotLoadFrame('dash-map.html','js/dash-map.js');
-IotLoadFrame('devicemodel-list.html','js/devicemodel-list.js');
+//IotLoadFrame('devicemodel-list.html','js/devicemodel-list.js');
+IotLoadFrame('gateway-list.html','js/gateway-list.js');
 
 </script>
 
@@ -179,7 +183,7 @@ IotLoadFrame('devicemodel-list.html','js/devicemodel-list.js');
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                 <h4 class="modal-title">Select Group for device</h4>
+                 <h4 class="modal-title">选择设备组</h4>
             </div>
             <div class="modal-body"></div>
             <div class="modal-footer">
@@ -213,7 +217,7 @@ IotLoadFrame('devicemodel-list.html','js/devicemodel-list.js');
 	<script src="assets/js/neon-demo.js"></script>
 	-->	
 	<script src="assets/js/neon-custom.js"></script>
-
+	<script src="assets/js/select2/select2.min.js"></script>
 
 	
 	<!-- bootstrap-table js -->
@@ -227,11 +231,17 @@ IotLoadFrame('devicemodel-list.html','js/devicemodel-list.js');
 	<script src="assets/js/tag-input/bootstrap-tagsinput.js"></script>
 	<script src="assets/js/echarts.common.min.js"></script>
 
+
 <script type="text/javascript" > 
 // -------- begin select group modal script ---->
 $('#selectModal').on('show.bs.modal', function (e) {
   //  var loadurl = $(e.relatedTarget).data('load-url');
-    $(this).find('.modal-body').load('devicegroup-select.html');
+	$.ajaxSetup({
+	  cache: false
+	});
+    $(this).find('.modal-body').load('devicegroup-select.html',function(){
+			$.getScript('js/devicegroup-select.js');
+		});
 });
 
 $('#selectModal').on('hide.bs.modal', function (e) {

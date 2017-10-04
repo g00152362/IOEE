@@ -7,11 +7,11 @@
 	<link rel="stylesheet" href="css/gateway-list.css">
 
 		
-		<div class="panel panel-default" data-collapsed="0"><!-- to apply shadow add class "panel-shadow" -->
+		<div class="panel panel-default" data-collapsed="1"><!-- to apply shadow add class "panel-shadow" -->
 	
 			<!-- panel head -->
 			<div class="panel-heading">
-				<div class="panel-title">Group</div>
+				<div class="panel-title">过滤条件</div>
 				
 				<div class="panel-options">
 					<a href="#" data-toggle="modal" data-target="#selectModal" ><i class="entypo-plus"></i></a>
@@ -35,18 +35,18 @@
    	    <div id="toolbar">
    	    <div class="btn-group">
 	        <button id="new" class="btn btn-Default" onClick="IotLoadFrame('gateway-add.html','js/gateway-add.js')">
-	            <i class="glyphicon glyphicon-plus"></i> New
+	            <i class="glyphicon glyphicon-plus"></i> 新建
 	        </button>  
 	        <button id="edit" class="btn btn-Default" onClick="editGateway()">
-	            <i class="glyphicon glyphicon-pencil"></i> Edit
+	            <i class="glyphicon glyphicon-pencil"></i> 编辑
 	        </button>    	
 	        
 	        <button type="button" class="btn btn-Default" data-load-url="devicegroup-select" onClick="addToGroup()"  >
-	            <i class="glyphicon glyphicon-import"></i> Move Group
+	            <i class="glyphicon glyphicon-import"></i> 变更组
 	        </button>  	 
  	                         
-	        <button id="remove" class="btn btn-danger"  onClick="deleteGateway()">
-	            <i class="glyphicon glyphicon-remove"></i> Delete
+	        <button id="remove" class="btn btn-Default"  onClick="deleteGateway()">
+	            <i class="glyphicon glyphicon-remove"></i> 删除
 	        </button>
 	        
 	        </div>

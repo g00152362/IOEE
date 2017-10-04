@@ -5,6 +5,10 @@ var gw_add = gw_add || {};
 	"use strict";
 	$(document).ready(function()
 	{
+		// init selection compnent
+		
+		BindSelect('groupName','deviceGroup/listallname');
+		
 		gw_add.$form =  $('#gatewayAddForm');
     	// use modal_select to know who use select_group;
     	localStorage['modal_select']="new_device";

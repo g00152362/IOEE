@@ -58,10 +58,13 @@ function formatRebootReason(val,row){
 }
 function initNavBar(){
 	g_navBarName = new Array();
-	g_navBarName['Home'] = "<a href='#' onClick=\"IotLoadFrame('dash-map.html','js/dash-map.js')\">Home</a>";
-	g_navBarName['Device'] = "<a href='#' onClick=\"IotLoadFrame('gateway-list.html','js/gateway-list.js')\">Device</a>";
-	g_navBarName['Model'] = "<a href='#' onClick=\"IotLoadFrame('devicemodel-list.html','js/devicemodel-list.js')\">Model</a>";
-	g_navBarName['Group'] = "<a href='#' onClick=\"IotLoadFrame('devicegroup-list.html','js/devicegroup-list.js')\">Group</a>";	
+	g_navBarName['Home'] = "<a href='#' onClick=\"IotLoadFrame('dash-map.html','js/dash-map.js')\">监控</a>";
+	g_navBarName['Device'] = "<a href='#' onClick=\"IotLoadFrame('gateway-list.html','js/gateway-list.js')\">设备</a>";
+	g_navBarName['Model'] = "<a href='#' onClick=\"IotLoadFrame('devicemodel-list.html','js/devicemodel-list.js')\">设备类型</a>";
+	g_navBarName['Group'] = "<a href='#' onClick=\"IotLoadFrame('devicegroup-list.html','js/devicegroup-list.js')\">设备组</a>";	
+	g_navBarName['Add'] = "<strong>新增</strong>";
+	g_navBarName['List'] = "<strong>列表</strong>";
+	g_navBarName['Edit'] = "<strong>编辑</strong>";
 }				
 
 function setNavBar(s){
@@ -87,13 +90,9 @@ function setNavBar(s){
 		 		li.setAttribute("id", "sbar"+i);
 		 		ul.appendChild(li);				
 			}
-			if(i != s.length-1){
-				li.innerHTML = g_navBarName[ s[i]];
-			}
-			else{
-				// last one
-				li.innerHTML = "<strong>" +  s[i] + "</strong>";
-			}
+
+			li.innerHTML = g_navBarName[ s[i]];
+	
 				
 			
 		}		
@@ -144,7 +143,28 @@ function setNavBar(s){
 	 alert(errMsg);
  }
  
-
+ // 绑定数据到控件中去
+ function BindSelect(ctrlName, url) {
+	
+	    var control = $('#' + ctrlName);
+	    //设置Select2的处理
+	    control.select2({
+	        allowClear: true,
+//	        formatResult: formatResult,
+//	        formatSelection: formatSelection,
+//	        escapeMarkup: function (m) {
+//	            return m;
+//	        }
+	    });
+	    //绑定Ajax的内容
+	    $.getJSON(url, function (data) {
+	        control.empty();//清空下拉框
+	        //返回String数组
+	        for(var i=0;i<data.length;i++){
+	            control.append("<option value='" +  data[i] + "'>&nbsp;" + data[i]+ "</option>");
+	        };
+	    });
+	}
  
 
 

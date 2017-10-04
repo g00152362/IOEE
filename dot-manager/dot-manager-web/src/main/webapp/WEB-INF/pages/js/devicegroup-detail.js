@@ -105,7 +105,7 @@ function initTable() {
 	});
 	
 	var para= {'name':  dg_detail.$name};
-	$.post("/gateway/listBygroupName",para,
+	$.post("gateway/listBygroupName",para,
 			function(data){
 			dg_detail.$table.bootstrapTable('load',data );
 		}); 	

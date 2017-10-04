@@ -99,7 +99,7 @@ public class DeviceGroupServiceImpl implements DeviceGroupService{
 		
 		TbDeviceGroupExample ex = new TbDeviceGroupExample();
 		Criteria cr = ex.createCriteria();
-	
+		
 		
 		cr.andNameEqualTo(groupName);
 		List<TbDeviceGroup> list = itemMapper.selectByExample(ex);
@@ -116,6 +116,14 @@ public class DeviceGroupServiceImpl implements DeviceGroupService{
 		}
 		return null;		
 
+	}
+
+	@Override
+	public List <String> getAllDeviceGroupNameList() {
+		// TODO Auto-generated method stub
+		List <String> list = itemMapper.selectAllGroupName();
+		
+		return list;
 	}
 	
 	

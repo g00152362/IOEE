@@ -54,7 +54,7 @@ var gw_list = gw_list || {};
 
          },
          {
-             title: "Name",
+             title: "设备名",
              field: "deviceName",
              width: 180,
            
@@ -62,7 +62,7 @@ var gw_list = gw_list || {};
          },
          {
              field: "serialNumber",
-             title: "Series Number",
+             title: "序列号",
              width: 180,
              formatter:'deviceEsnFormat',
              sortable: true,
@@ -71,7 +71,7 @@ var gw_list = gw_list || {};
          },
          {
              field: "status",
-             title: "Status",
+             title: "状态",
              width: 150,
              sortable: true,
             
@@ -79,14 +79,14 @@ var gw_list = gw_list || {};
            },         
          {
              field: "groupName",
-             title: "Group",
+             title: "设备组",
              width: 180,
              valign: 'middle',             
              formatter:'groupFormat'               
           },
           {
               field: "type",
-              title: "Model",
+              title: "类型",
             
               sortable: true,
 //              editable: true,              
@@ -94,7 +94,7 @@ var gw_list = gw_list || {};
            },     
            {
                field: "position",
-               title: "Location",
+               title: "位置",
         
 //               editable: true,                   
                   width:300
@@ -102,7 +102,7 @@ var gw_list = gw_list || {};
             {
                 field: "softwareVersion",
              
-                title: "Software",
+                title: "软件版本",
                 width: 60
              }      
      ]

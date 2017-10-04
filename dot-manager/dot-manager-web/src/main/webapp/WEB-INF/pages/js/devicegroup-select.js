@@ -18,7 +18,7 @@ var dg_select = dg_select || {};
 function initselectgrouptable() {
 	dg_select.$table.bootstrapTable({
    	     dataField: "rows",
-         height: getHeight(),
+    //     height: getHeight(),
          singleSelect:true,
      columns: [
             {
@@ -29,7 +29,7 @@ function initselectgrouptable() {
 
            }, 
          {
-             title: "Name",
+             title: "组名",
              field: "name",
              width: 180,
              valign: 'middle',   
@@ -37,8 +37,7 @@ function initselectgrouptable() {
     
             {
                 field: "description",
-                valign: 'middle',                
-                title: "Description",
+                title: "描述",
                 width: 200
              }      
      ]

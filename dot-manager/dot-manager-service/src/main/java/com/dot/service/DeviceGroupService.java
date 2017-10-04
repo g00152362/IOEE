@@ -1,5 +1,7 @@
 package com.dot.service;
 
+import java.util.List;
+
 import com.dot.pojo.TbDeviceGroup;
 
 import dot.com.common.pojo.EUDataGridResult;
@@ -13,6 +15,7 @@ public interface DeviceGroupService {
 	EUDataGridResult getDeviceGroupList(Integer page,Integer rows);
 	TaotaoResult getDeviceGroupDetailById(int groupId);
 	TbDeviceGroup getDeviceGroupDetailByName(String groupName);
+	List <String> getAllDeviceGroupNameList();
 	
 
 }
