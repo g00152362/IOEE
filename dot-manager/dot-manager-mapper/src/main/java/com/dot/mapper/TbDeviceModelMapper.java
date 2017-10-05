@@ -27,4 +27,6 @@ public interface TbDeviceModelMapper {
     int updateByPrimaryKeySelective(TbDeviceModel record);
 
     int updateByPrimaryKey(TbDeviceModel record);
+    
+    List <String> selectAllGModelName();
 }

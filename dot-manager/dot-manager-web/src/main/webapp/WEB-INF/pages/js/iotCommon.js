@@ -65,6 +65,9 @@ function initNavBar(){
 	g_navBarName['Add'] = "<strong>新增</strong>";
 	g_navBarName['List'] = "<strong>列表</strong>";
 	g_navBarName['Edit'] = "<strong>编辑</strong>";
+	g_navBarName['Detail'] = "<strong>详细信息</strong>";
+	g_navBarName['Map'] = "<strong>地图视图</strong>";
+	
 }				
 
 function setNavBar(s){
@@ -148,25 +151,38 @@ function setNavBar(s){
 	
 	    var control = $('#' + ctrlName);
 	    //设置Select2的处理
-	    control.select2({
-	        allowClear: true,
-//	        formatResult: formatResult,
-//	        formatSelection: formatSelection,
-//	        escapeMarkup: function (m) {
-//	            return m;
-//	        }
-	    });
+	    control.selectpicker();
 	    //绑定Ajax的内容
 	    $.getJSON(url, function (data) {
-	        control.empty();//清空下拉框
+	        control.find('option').remove();//清空下拉框
 	        //返回String数组
-	        for(var i=0;i<data.length;i++){
-	            control.append("<option value='" +  data[i] + "'>&nbsp;" + data[i]+ "</option>");
-	        };
+	        var optionString = "";
+            for (i = 0; i < data.length; i++) {
+                optionString += "<option value=\'"+ data[i] +"\'>" + data[i] + "</option>";
+            }
+            control.html(optionString);
+            control.selectpicker('refresh');
 	    });
 	}
  
+ // 格式化设备状态
+	function formatStatus(value,row,index)
+	{
+ 		if(value == 1){
+ 			return "<i style=\"color:#5ECC49;\" class='entypo-record'></i>在线";
+ 		}
+ 		else if(value == 0){
+ 			return "   <i class='entypo-record'></i>离线"; 			
+ 			
+ 		}
+ 		else if(value == 2){
+ 			return " <i style=\"color:#EE4749;\" class='entypo-record'></i>未注册";
+ 		}	 		
+ 		else{
+ 			return "unKonw";
+ 		}
 
+	}
 
 
 

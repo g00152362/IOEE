@@ -3,6 +3,7 @@ package com.dot.controller;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
@@ -47,6 +48,7 @@ public class DeviceModelController {
 		return item;
 	}
 	
+	
 	@RequestMapping(value = "/pages/deviceModel/add", method = RequestMethod.POST)	
 	@ResponseBody
 	public TaotaoResult addDeviceModel(TbDeviceModel dmInfo){
@@ -78,7 +80,7 @@ public class DeviceModelController {
 		
 	}
 	
-	@RequestMapping("/deviceModel/listid")
+	@RequestMapping(value = "/pages/deviceModel/listid" ,method = RequestMethod.POST)
 	@ResponseBody
 	public TaotaoResult getGatewayListid(@RequestParam("id") String index){
 		TaotaoResult result = itemService.getDeviceModelDetailById(index);
@@ -151,5 +153,17 @@ public class DeviceModelController {
 		}
 		json = new ObjectMapper().writeValueAsString(map);
 		return json;
-	}  
+	} 
+	
+	@RequestMapping("/pages/deviceModel/listallname")
+	@ResponseBody
+	// page 和 rows 要和请求中一致
+	public List<String> getDeviceModelListAllName(){
+
+		List<String> list = itemService.getAllDeviceModelNameList();
+
+		return list;
+	}		
+			
+	
 }

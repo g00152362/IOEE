@@ -6,7 +6,7 @@ var dashMap = dashMap || {};
 	"use strict";
 	$(document).ready(function()
 	{
-		var s=["Home","Map View"];
+		var s=["Home","Map"];
 		setNavBar(s);	
 		
 		loadJScript();
@@ -18,13 +18,14 @@ var dashMap = dashMap || {};
 function loadJScript() {
 	var script = document.createElement("script");
 	script.type = "text/javascript";
-	script.src = "http://api.map.baidu.com/api?v=2.0&ak=pta3ObbcGPGMGfFTGAI97lbkzRhCaShc&callback=init";
+	script.src = "http://api.map.baidu.com/api?v=2.0&ak=pta3ObbcGPGMGfFTGAI97lbkzRhCaShc&callback=init_map";
 	document.body.appendChild(script);
 }; 
 
 
 //init mapping
-function init() {
+function init_map() {
+	console.log('coming....');
 	var index = 0;
 	var mapdata = new Array();    	
 

@@ -10,7 +10,8 @@ var gw_edit = gw_edit || {};
 		var s=["Home","Device","Edit"];
 		setNavBar(s);
 		
-		BindSelect('groupName','deviceGroup/listallname');		
+		BindSelect('groupName','deviceGroup/listallname');	
+		BindSelect('type','deviceModel/listallname');		
 		initEdit();
 	
 	});
@@ -73,6 +74,9 @@ function initEdit(){
 			if(key == 'groupName'){
 				$('#groupName').val(val).trigger("change");
 			}
+			if(key == 'type'){
+				$('#type').val(val).trigger("change");
+			}			
 		});
 
 		

@@ -136,23 +136,7 @@ var gw_list = gw_list || {};
         return $(window).height() - $('h1').outerHeight(true);
     }
 
-	function formatStatus(value,row,index)
-	{
- 		if(value == 1){
- 			return "<i style=\"color:#5ECC49;\" class='entypo-record'></i>Online";
- 		}
- 		else if(value == 0){
- 			return "   <i class='entypo-record'></i>Offline"; 			
- 			
- 		}
- 		else if(value == 2){
- 			return " <i style=\"color:#EE4749;\" class='entypo-record'></i>unregistered";
- 		}	 		
- 		else{
- 			return "unKonw";
- 		}
 
-	}
 		
 	/*format group */
 	function groupFormat(value,row,index){

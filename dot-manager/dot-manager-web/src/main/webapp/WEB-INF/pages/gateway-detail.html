@@ -21,24 +21,25 @@
 					<div class="profile-name">
 						<strong>
 							<a href="#"  id="deviceName">&nbsp;</a>
-							<img  id="pic_status" width="14" height="14" src="images/circle_green.png" />
 							<!-- User statuses available classes "is-online", "is-offline", "is-idle", "is-busy" -->						
 							</strong>
 						<span><a href="#" id="status">&nbsp;</a></span>
+		
 					</div>
 				</li>
 				
 				<li>
 					<div class="profile-stat">
 						<h3>64</h3>
-						<span><a href="#">Alert process</a></span>
+						<span><a href="#">告警需要处理</a></span>
 					</div>
 				</li>
-				
+			
+
 				<li>
 					<div class="profile-stat">
 						<h3>1</h3>
-						<span><a href="#">Task running</a></span>
+						<span><a href="#">任务正在运行</a></span>
 					</div>
 				</li>
 			</ul>
@@ -49,11 +50,11 @@
 			<div class="profile-buttons">
 				<a href="#" class="btn btn-default">
 					<i class="entypo-user-add"></i>
-					Command
+					命令行
 				</a>
 				
 				<a href="#" class="btn btn-default">
-					<i class="entypo-mail">Reset</i>
+					<i class="entypo-ccw">重启设备</i>
 				</a>
 			</div>
 		</div>
@@ -69,23 +70,27 @@
 			<div class="col-sm-offset-2 col-sm-10">
 				
 				<ul class="my-user-details">
+								
 		                <li >
-		                  Esn: <a><span id="serialNumber" >&nbsp;</span></a>
+		                  	设备号: <a><span id="serialNumber" >&nbsp;</span></a>
+		                </li>								
+		                <li >
+		                  	设备类型: <a><span id="type" >&nbsp;</span></a>
 		                </li>
 		                <li >
-		                  Group: <a><span id="groupName" >&nbsp;</span></a>
+		                  	设备组: <a><span id="groupName" >&nbsp;</span></a>
 		                </li>
 		                <li>
-		                  Location: <a ><span id="position">&nbsp;</span></a>
+		                 	 位置: <a ><span id="position">&nbsp;</span></a>
 		                </li>
 		         </ul>            	   
 				
 				
 				<!-- tabs for the profile links -->
 				<ul class="nav nav-tabs">
-					<li class="active"><a href="#profile-info">Profile</a></li>
-					<li><a href="#biography">Alert</a></li>
-					<li><a href="#profile-edit">Task</a></li>
+					<li class="active"><a href="#profile-info">设备信息</a></li>
+					<li><a href="#biography">告警信息</a></li>
+					<li><a href="#profile-edit">运行任务</a></li>
 				</ul>
 				
 			</div>
@@ -97,53 +102,116 @@
 		
 
 	<div class="row">
-	<div class="container">
-	<div class=" col-md-4">
+
+	<div class="  col-md-4">
 	    <table id="tb_basic_info" class="table table-striped">
-	         <tr class="scell_top" >
-	          <td class="scell_top">Type:</td>
-	          <td class="scell_top">Vendor:</td>
+	    	<tr>
+	          <td ><strong>运行信息</strong></td>
+	          <td ></td>
 	        </tr>
-	        <tr class="scell_bottom">
-	          <td class="scell_bottom" id="type">&nbsp;</td>
-	          <td class="scell_bottom" id="vendor">&nbsp;</td>
-	        </tr>
-	        <tr>
-	          <td class="scell_noboard">MAC:</td>
-	          <td class="scell_noboard">IP:</td>
+
+	        <tr >
+	         <td >生产厂商:</td>
+	          <td  id="vendor">&nbsp;</td>
 	        </tr>
 	        <tr>
-	          <td class="scell_bottom" id="mac">&nbsp;</td>
-	          <td class="scell_bottom" id="ip">&nbsp;</td>
+	          <td >MAC地址:</td>
+	          <td id="mac">&nbsp;</td>
 	        </tr>
 	        <tr>
-	          <td class="scell_noboard">BootTime:</td>
-	          <td class="scell_noboard">Reboot Reason:</td>
+	       	  <td>IP地址:</td>
+	          <td id="ip">&nbsp;</td>
 	        </tr>
 	        <tr>
-	          <td class="scell_bottom" id="bootTime" >&nbsp;</td>
-	          <td class="scell_bottom" id="lastRebootType">&nbsp;</td>
+	          <td >启动时间:</td>
+	          <td  id="bootTime" >&nbsp;</td>
 	        </tr>
 	        <tr>
-	          <td class="scell_noboard" >Software Version:</td>
-	          <td class="scell_noboard" >Hardware Version:</td>
+				<td>重启原因:</td>
+	          	<td id="lastRebootType">&nbsp;</td>
 	        </tr>
+
 	        <tr>
-	          <td class="scell_bottom" id="softwareVersion">&nbsp;</td>
-	          <td class="scell_bottom" id="hardwareVersion">&nbsp;</td>
-	        </tr>
-	        <tr>
-	          <td class="scell_noboard" >Last Report Time:</td>
-	          <td class="scell_noboard" >Last Update Time:</td>
+	          <td  >注册时间:</td>
+	          <td id="reportTime" >&nbsp;</td>
+	         
 	        </tr>
 	      <tr>
-	          <td class="scell_bottom" id="reportTime" >&nbsp;</td>
-	          <td class="scell_bottom" id="updateTime">&nbsp;</td>
+	           <td class="scell_noboard" >最近上线:</td>
+	           <td  id="updateTime">&nbsp;</td>
 	      </tr>
+	    </table>	
+
+    </div>
+	<div class=" col-md-4">
+	    <table id="tb_hardware_info" class="table table-striped">
+	    	<tr>
+	          <td ><strong>硬件信息</strong></td>
+	          <td ></td>
+	        </tr>
+	         <tr>
+	          <td >CPU 处理器:</td>
+	           <td  id="processor">&nbsp;</td>
+	        </tr>
+	        <tr >
+	         <td >CPU核数:</td>
+	          <td  id="coreNumber">&nbsp;</td>
+	        </tr>
+	        <tr>
+	          <td >操作系统:</td>
+	          <td id="os">&nbsp;</td>
+	        </tr>
+	        <tr>
+	       	  <td>内存:</td>
+	          <td id="memory">&nbsp;</td>
+	        </tr>
+	        <tr>
+	          <td >存储:</td>
+	          <td  id="storage" >&nbsp;</td>
+	        </tr>
+	        <tr>
+				<td>硬件描述:</td>
+	          	<td id="description">&nbsp;</td>
+	        </tr>
+
 	    </table>
-    </div>
-    </div>
-</div>
+	    </div>	
+	<div class=" col-md-4">
+	    <table id="tb_version_info" class="table table-striped">
+	    	<tr>
+	          <td ><strong>版本信息</strong></td>
+	          <td ></td>
+	        </tr>
+	        <tr>
+				<td>版本BOM号:</td>
+	          	<td id="bomName">&nbsp;</td>
+	        </tr>
+	        
+	        <tr>
+	          <td  >软件版本:</td>
+	          <td id="softwareVersion">&nbsp;</td>
+	        </tr>
+	        <tr>
+	          <td >补丁版本:</td>
+	          <td id="patchVersion">&nbsp;</td>
+	        </tr>	        
+	        <tr>
+	       		<td  >硬件版本:</td>
+	          	<td id="hardwareVersion">&nbsp;</td>
+	        </tr>
+
+	        <tr>
+	       	  <td>配置版本:</td>
+	          <td id="configVersion">&nbsp;</td>
+	        </tr>
+	        <tr>
+	          <td >应用版本:</td>
+	          <td  id="applicationVersion" >&nbsp;</td>
+	        </tr>
+
+	    </table>	
+    </div>    
+	</div>
 
 </div>
  <!-- 

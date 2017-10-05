@@ -7,6 +7,7 @@ var gw_detail = gw_detail || {};
 	{
 		gw_detail.$form =  $('#deviceGroupAddForm');
 		gw_detail.$esn = localStorage['esn'];
+		gw_detail.$type ="";
 		
 		var s=["Home","Device","Detail"];
 		setNavBar(s);
@@ -17,7 +18,13 @@ var gw_detail = gw_detail || {};
 
 function initDeviceDetailPage(){
 	var para = {esn:gw_detail.$esn};
+	var type ="";
+	//设置为同步，需要等待返回数据进行下一次查询
+	$.ajaxSetup({
+		async: false
+		});
 	
+	// 加载基本信息	
 	$.post("gateway/listid",para,
 		function(data){
 			if(data.status != 200){
@@ -26,51 +33,53 @@ function initDeviceDetailPage(){
 			}
 			addDeviceInfo(data.data);
 			changeStatue(data.data.status);
-		//	loadDeviceScript(data.data.position);
+			type = data.data.type;
 
-	}); 
+	});
+	
+	para ={id:type};
+	$.post("deviceModel/listid",para,
+			function(data){
+				if(data.status != 200){
+					alert("get data fail!");
+					return;
+				}
+				addDeviceInfo(data.data);
+		}); 
+	
 }
  
 
 
 function addDeviceInfo(info)
-	{
-		// fill position;
-		$("#serialNumber").text(info.serialNumber);
-		$("#position").text(info.position);
-		$("#deviceName").text(info.deviceName);
-		$("#groupName").text(info.groupName);	
-		$("#type").text(info.type);	
-		$("#vendor").text(info.vendor);	
-		$("#mac").text(info.mac);	
-		$("#ip").text(info.ip);	
-		$("#bootTime").text(formatDateTime(info.bootTime));	
-		$("#lastRebootType").text(formatRebootReason(info.lastRebootType));	
-		$("#softwareVersion").text(info.softwareVersion);	
-		$("#hardwareVersion").text(info.hardwareVersion);	
-		$("#reportTime").text(formatDateTime(info.reportTime));	
-		$("#updateTime").text(formatDateTime(info.updatedTime));
-	};
+{
+	$.each(info, function(key, val) { 
+		if(key == "bootTime" || key == "reportTime" || key == "updateTime"){
+			$("#"+key).text(formatDateTime(val));
+		}
+		else if(key == "lastRebootType"){
+			$("#"+key).text(formatRebootReason(val));
+		}else if(key == "memory" || key == "storage"){
+			var v = val;
+			if(val >=1000){
+				v =val/1000;
+				$("#"+key).text(v +'G');
+			}else{
+				$("#"+key).text(v +'M');
+			}
+		}
+		else{
+			$("#"+key).text(val);
+		}
+		
+
+	});
+
+}
 	
-	// TODO: the color need be changed!!!! how to do?
 	function changeStatue(value)
 	{
-	 		if(value == 1)
-	 		{
-	 			$("#pic_status").attr("src","/images/circle_green");
-				$("#status").text(" Online");
-			
-
-	 		}
-	  		else if(value == 0){
-	  			$("#pic_status").attr("src","/images/circle_gray.png");
-				$("#status").text(" Offline");
-
-	 		} else if(value ==2){
-	  			$("#pic_status").attr("src","/images/circle_gray.png");  
-	  			$("#status").text(" Unregiested");  			
-	 		}
-
+		$("#status").html(formatStatus(value));
 	};
 	
  /*

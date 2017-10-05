@@ -1,6 +1,8 @@
 package com.dot.service;
 
 
+import java.util.List;
+
 import com.dot.pojo.TbDeviceModel;
 
 import dot.com.common.pojo.EUDataGridResult;
@@ -13,5 +15,6 @@ public interface DeviceModelService {
 	EUDataGridResult getDeviceModelList(Integer page,Integer rows);
 	TaotaoResult getDeviceModelDetailById(String modelId);
 	int countDeviceModelByName(String modelId);
+	List <String> getAllDeviceModelNameList();
 
 }

@@ -8,6 +8,7 @@ var gw_add = gw_add || {};
 		// init selection compnent
 		
 		BindSelect('groupName','deviceGroup/listallname');
+		BindSelect('type','deviceModel/listallname');
 		
 		gw_add.$form =  $('#gatewayAddForm');
     	// use modal_select to know who use select_group;

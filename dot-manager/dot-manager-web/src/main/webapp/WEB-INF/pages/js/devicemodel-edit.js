@@ -46,7 +46,6 @@ var dm_edit = dm_edit || {};
 			loadData:function(){
 				// load date form db
 				var param = {'id':dm_edit.$modelId };
-			    console.log(param);
 				$.post("deviceModel/listid",param,
 						function(data){
 							if(data.status != 200){

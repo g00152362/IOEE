@@ -14,7 +14,7 @@ public class PageController {
     //首页
     @RequestMapping("/")
     public  String showIndex(){
-        return "redirect:/pages/index.html";
+        return "redirect:/pages/login.html";
     }
 
     //展示其他页面
