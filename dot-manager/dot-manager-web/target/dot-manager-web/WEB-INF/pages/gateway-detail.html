@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+</head>
+
+<body>
+
+	
+<div class="profile-env">
+	<!-- brief information -->
+	<header class="row">
+		<div class="col-sm-2">
+			<a href="#" class="profile-picture">
+				<img src="images/AR.png" class="img-responsive img-circle" />
+			</a>
+		</div>
+		
+		<div class="col-sm-7">
+ 				
+			<ul class="profile-info-sections">
+				<li>
+					<div class="profile-name">
+						<strong>
+							<a href="#"  id="deviceName">&nbsp;</a>
+							<!-- User statuses available classes "is-online", "is-offline", "is-idle", "is-busy" -->						
+							</strong>
+						<span><a href="#" id="status">&nbsp;</a></span>
+		
+					</div>
+				</li>
+				
+				<li>
+					<div class="profile-stat">
+						<h3>64</h3>
+						<span><a href="#">告警需要处理</a></span>
+					</div>
+				</li>
+			
+
+				<li>
+					<div class="profile-stat">
+						<h3>1</h3>
+						<span><a href="#">任务正在运行</a></span>
+					</div>
+				</li>
+			</ul>
+		</div>
+		
+		<div class="col-sm-3">
+			
+			<div class="profile-buttons">
+				<a href="#" class="btn btn-default">
+					<i class="entypo-user-add"></i>
+					命令行
+				</a>
+				
+				<a href="#" class="btn btn-default">
+					<i class="entypo-ccw">重启设备</i>
+				</a>
+			</div>
+		</div>
+		
+	</header>
+
+
+ 	<!-- device esn,group,position -->	   
+	<section class="profile-info-tabs">
+		
+		<div class="row">
+			
+			<div class="col-sm-offset-2 col-sm-10">
+				
+				<ul class="my-user-details">
+								
+		                <li >
+		                  	设备号: <a><span id="serialNumber" >&nbsp;</span></a>
+		                </li>								
+		                <li >
+		                  	设备类型: <a><span id="type" >&nbsp;</span></a>
+		                </li>
+		                <li >
+		                  	设备组: <a><span id="groupName" >&nbsp;</span></a>
+		                </li>
+		                <li>
+		                 	 位置: <a ><span id="position">&nbsp;</span></a>
+		                </li>
+		         </ul>            	   
+				
+				
+				<!-- tabs for the profile links -->
+				<ul class="nav nav-tabs">
+					<li class="active"><a href="#profile-info">设备信息</a></li>
+					<li><a href="#biography">告警信息</a></li>
+					<li><a href="#profile-edit">运行任务</a></li>
+				</ul>
+				
+			</div>
+			
+		</div>
+		
+	</section>
+	
+		
+
+	<div class="row">
+
+	<div class="  col-md-4">
+	    <table id="tb_basic_info" class="table table-striped">
+	    	<tr>
+	          <td ><strong>运行信息</strong></td>
+	          <td ></td>
+	        </tr>
+
+	        <tr >
+	         <td >生产厂商:</td>
+	          <td  id="vendor">&nbsp;</td>
+	        </tr>
+	        <tr>
+	          <td >MAC地址:</td>
+	          <td id="mac">&nbsp;</td>
+	        </tr>
+	        <tr>
+	       	  <td>IP地址:</td>
+	          <td id="ip">&nbsp;</td>
+	        </tr>
+	        <tr>
+	          <td >启动时间:</td>
+	          <td  id="bootTime" >&nbsp;</td>
+	        </tr>
+	        <tr>
+				<td>重启原因:</td>
+	          	<td id="lastRebootType">&nbsp;</td>
+	        </tr>
+
+	        <tr>
+	          <td  >注册时间:</td>
+	          <td id="reportTime" >&nbsp;</td>
+	         
+	        </tr>
+	      <tr>
+	           <td class="scell_noboard" >最近上线:</td>
+	           <td  id="updateTime">&nbsp;</td>
+	      </tr>
+	    </table>	
+
+    </div>
+	<div class=" col-md-4">
+	    <table id="tb_hardware_info" class="table table-striped">
+	    	<tr>
+	          <td ><strong>硬件信息</strong></td>
+	          <td ></td>
+	        </tr>
+	         <tr>
+	          <td >CPU 处理器:</td>
+	           <td  id="processor">&nbsp;</td>
+	        </tr>
+	        <tr >
+	         <td >CPU核数:</td>
+	          <td  id="coreNumber">&nbsp;</td>
+	        </tr>
+	        <tr>
+	          <td >操作系统:</td>
+	          <td id="os">&nbsp;</td>
+	        </tr>
+	        <tr>
+	       	  <td>内存:</td>
+	          <td id="memory">&nbsp;</td>
+	        </tr>
+	        <tr>
+	          <td >存储:</td>
+	          <td  id="storage" >&nbsp;</td>
+	        </tr>
+	        <tr>
+				<td>硬件描述:</td>
+	          	<td id="description">&nbsp;</td>
+	        </tr>
+
+	    </table>
+	    </div>	
+	<div class=" col-md-4">
+	    <table id="tb_version_info" class="table table-striped">
+	    	<tr>
+	          <td ><strong>版本信息</strong></td>
+	          <td ></td>
+	        </tr>
+	        <tr>
+				<td>版本BOM号:</td>
+	          	<td id="bomName">&nbsp;</td>
+	        </tr>
+	        
+	        <tr>
+	          <td  >软件版本:</td>
+	          <td id="softwareVersion">&nbsp;</td>
+	        </tr>
+	        <tr>
+	          <td >补丁版本:</td>
+	          <td id="patchVersion">&nbsp;</td>
+	        </tr>	        
+	        <tr>
+	       		<td  >硬件版本:</td>
+	          	<td id="hardwareVersion">&nbsp;</td>
+	        </tr>
+
+	        <tr>
+	       	  <td>配置版本:</td>
+	          <td id="configVersion">&nbsp;</td>
+	        </tr>
+	        <tr>
+	          <td >应用版本:</td>
+	          <td  id="applicationVersion" >&nbsp;</td>
+	        </tr>
+
+	    </table>	
+    </div>    
+	</div>
+
+</div>
+ <!-- 
+<script src="js/gateway-detail.js"></script>
+ -->
+</body>
+</html>

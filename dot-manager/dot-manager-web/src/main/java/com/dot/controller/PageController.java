@@ -20,6 +20,7 @@ public class PageController {
     //展示其他页面
     @RequestMapping("/{page}")
     public String showPage(@PathVariable String page){
+    	System.out.println(page);
         return page;
     }
     

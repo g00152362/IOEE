@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="description" content="eIot Admin Panel" />
+	<meta name="author" content="" />
+	
+	<title>eIOT</title>
+	
+
+	<link rel="stylesheet" href="assets/js/jquery-ui/css/no-theme/jquery-ui-1.10.3.custom.min.css">
+	<link rel="stylesheet" href="assets/css/font-icons/entypo/css/entypo.css">
+
+	<link rel="stylesheet" href="assets/css/bootstrap.css">
+	<link rel="stylesheet" href="assets/css/neon-core.css">
+	<link rel="stylesheet" href="assets/css/neon-theme.css">
+	<link rel="stylesheet" href="assets/css/neon-forms.css">
+	<link rel="stylesheet" href="assets/css/custom.css">
+	<link rel="stylesheet" href="assets/css/skins/white.css">
+<!-- 
+	<link rel="stylesheet" href="assets/js/select2/select2.css">	
+
+	<link rel="stylesheet" href="assets/js/select2/select2-bootstrap.css">
+	 -->
+	 <link rel="stylesheet" href="assets/js/bootstrap-select/bootstrap-select.min.css">
+	<!-- add bootstrap table css -->
+	<link rel="stylesheet" href="assets/js/bootstrap-table/bootstrap-table.min.css">
+	<link rel="stylesheet" href="assets/js/tag-input/bootstrap-tagsinput.css">
+	<link rel="stylesheet" href="assets/js/daterangepicker/daterangepicker-bs3.css">
+
+	
+
+
+	<script src="assets/js/jquery-1.11.0.min.js"></script>
+
+	
+	<!-- todo add by myself -->
+	<script src="js/iotCommon.js"></script>
+	
+</head>
+<body class="page-body skin-white">
+
+<div class="page-container">	
+	<div class="sidebar-menu" id="sidebar-menu">
+			<div class="sidebar-menu-inner">			
+					<header class="logo-env">
+						
+						<!-- logo -->
+						<div class="logo">
+							<a href="index.html">
+								<img src="assets/images/logo-light@2x.png" width="120" alt="" />
+							</a>
+						</div>
+						
+						<!-- logo collapse icon -->
+									
+						<div class="sidebar-collapse">
+							<a href="#" class="sidebar-collapse-icon with-animation"><!-- add class "with-animation" if you want sidebar to have animation during expanding/collapsing transition -->
+								<i class="entypo-menu"></i>
+							</a>
+						</div>
+						<!-- open/close menu icon (do not remove if you want to enable menu on mobile devices) -->
+						<div class="sidebar-mobile-menu visible-xs">
+							<a href="#" class="with-animation"><!-- add class "with-animation" to support animation -->
+								<i class="entypo-menu"></i>
+							</a>
+						</div>
+					</header>
+							
+					
+			
+					<ul id="main-menu" class="">
+						<!-- add class "multiple-expanded" to allow multiple submenus to open -->
+						<!-- class "auto-inherit-active-class" will automatically add "active" class for parent elements who are marked already with class "active" -->
+						<li class="opened active">
+							<a href="index.html">
+								<i class="entypo-gauge"></i>
+								<span>监控</span>
+							</a>
+							<ul>
+								<li>
+									<a  href="#" onClick="IotLoadFrame('dash-map.html','js/dash-map.js')">
+										<span>地图视图</span>
+									</a>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<a href="#">			
+								<i class="entypo-layout"></i>
+								<span>设备</span>
+							</a>
+							<ul>
+								<li>
+									<a  href="#" onClick="IotLoadFrame('gateway-list.html','js/gateway-list.js')">
+										<span>设备</span>
+									</a>
+								</li>
+								<li>
+									<a  href="#" onClick="IotLoadFrame('devicegroup-list.html','js/devicegroup-list.js')">
+										<span>设备组</span>
+									</a>
+								</li>
+								<li>
+									<a href="#" onClick="IotLoadFrame('devicemodel-list.html','js/devicemodel-list.js')">
+										<span>设备类型</span>
+									</a>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<a  href="#" onClick="IotLoadFrame('data-chart.html','js/data-chart.js')">
+								<i class="entypo-monitor"></i>
+								<span>数据</span>
+							</a>
+						</li>
+						
+						<li>
+							<a href="mailbox.html">
+								<i class="entypo-attention"></i>
+								<span>告警</span>
+								<span class="badge badge-secondary">8</span>
+							</a>
+						</li>
+						<li>
+							<a href="mailbox.html">
+								<i class="entypo-list"></i>
+								<span>任务</span>
+								<span class="badge badge-success">3</span>
+							</a>
+						</li>			
+						<li>
+							<a href="mailbox.html">
+								<i class="entypo-doc-text"></i>
+								<span>仓库</span>
+							</a>
+							<ul>
+								<li>
+									<a  href="#" onClick="IotLoadFrame('software-list.html','js/software-list.js')">
+										<span>版本管理</span>
+									</a>
+								</li>
+
+							</ul>							
+						</li>			
+						<li>
+							<a href="mailbox.html">
+								<i class="entypo-box"></i>
+								<span>策略</span>
+							</a>
+						</li>
+						<li>
+							<a href="#">			
+								<i class="entypo-tools"></i>
+								<span>系统</span>
+							</a>
+							<ul>
+								<li>
+									<a  href="#" onClick="IotLoadFrame('loginuser-list.html','js/loginuser-list.js')">
+										<span>用户管理</span>
+									</a>
+								</li>
+								<li>
+									<a  href="#" >
+										<span>系统维护</span>
+									</a>
+								</li>
+							</ul>
+						</li>						
+					</ul>
+			</div>	
+	</div>	
+	
+	<div class="main-content" >
+		<div id='content-head'>
+		
+		</div>
+		<hr />
+		
+		<!-- main content load HTML -->
+		<div id="content">
+		</div>
+
+	</div>
+</div>
+
+<script type="text/javascript" > 	
+
+//IotLoadFrame('devicemodel-list.html');
+//IotLoadFrame('gateway-list.html');
+
+	$( "#content-head" ).load('content-head.html');
+//	$( "#sidebar-menu" ).load('sidebar-menu.html');
+	initNavBar();
+	//IotLoadFrame('dash-map.html','js/dash-map.js');
+	
+	IotLoadFrame('dash-map.html','js/dash-map.js');
+//IotLoadFrame('devicemodel-list.html','js/devicemodel-list.js');
+//IotLoadFrame('gateway-list.html','js/gateway-list.js');
+
+</script>
+
+<!-- all modal must be put here ??? -->	   
+   
+<!-- begin select modal--------- -->   
+<div class="modal " id="selectModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                 <h4 class="modal-title">选择设备组</h4>
+            </div>
+            <div class="modal-body"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Select</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end modal -->
+
+
+
+	<!-- Bottom Scripts -->
+	 <script src="assets/js/gsap/main-gsap.js"></script>
+	<script src="assets/js/jquery-ui/js/jquery-ui-1.10.3.minimal.min.js"></script>
+	<script src="assets/js/bootstrap.js"></script>
+	<script src="assets/js/joinable.js"></script>
+	<script src="assets/js/resizeable.js"></script>
+	<script src="assets/js/neon-api.js"></script>
+	<script src="assets/js/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+<!-- 		
+	<script src="assets/js/jvectormap/jquery-jvectormap-europe-merc-en.js"></script>
+	<script src="assets/js/jquery.sparkline.min.js"></script>
+	<script src="assets/js/rickshaw/vendor/d3.v3.js"></script>
+	<script src="assets/js/rickshaw/rickshaw.min.js"></script>
+	<script src="assets/js/bootstrap-tagsinput.min.js"></script>
+	<script src="assets/js/raphael-min.js"></script>
+	<script src="assets/js/morris.min.js"></script>
+	<script src="assets/js/toastr.js"></script>
+	<script src="assets/js/neon-chat.js"></script>
+	
+	<script src="assets/js/neon-demo.js"></script>
+		<script src="assets/js/select2/select2.min.js"></script>
+	-->		
+	<script src="assets/js/neon-custom.js"></script>
+
+
+	<script src="assets/js/bootstrap-select/bootstrap-select.min.js"></script>
+
+
+	
+	<!-- bootstrap-table js -->
+	<script src="assets/js/bootstrap-table/bootstrap-table.min.js"></script>
+	<script src="assets/js/jquery-validation/jquery.validate.min.js"></script>
+    <script src="assets/js/daterangepicker/moment.js"></script>
+     <script src="assets/js/daterangepicker/daterangepicker.js"></script>
+     <script src="assets/js/ajaxfileupload.js"></script> 
+     
+
+	<script src="assets/js/tag-input/bootstrap-tagsinput.js"></script>
+	<script src="assets/js/echarts.common.min.js"></script>
+
+
+<script type="text/javascript" > 
+// -------- begin select group modal script ---->
+$('#selectModal').on('show.bs.modal', function (e) {
+  //  var loadurl = $(e.relatedTarget).data('load-url');
+	$.ajaxSetup({
+	  cache: false
+	});
+    $(this).find('.modal-body').load('devicegroup-select.html',function(){
+			$.getScript('js/devicegroup-select.js');
+		});
+});
+
+$('#selectModal').on('hide.bs.modal', function (e) {
+
+	var select = getDeviceGroupSelections();
+ 	if(select[0]  != null){
+    	var cur = localStorage['modal_select'];
+    	// use modal_select to know who use select_group;
+    	switch(cur)
+		{
+		case "move_group":
+			// move device group
+    		$('#groupName').val(select[0]);
+    		updateGroupData(select[0]);
+		  break;
+		case "new_device":
+			$('#groupName').val(select[0]);
+		  break;
+		case "group_tag":
+			addGroupTag(gw_list.tagsinput,select[0],select[0],showListBygroup,null);
+		  break;		  
+		}
+  	}
+});
+
+
+function getDeviceGroupSelections() {
+    return $.map( $('#deviceGroupSelectList').bootstrapTable('getSelections'), function (row) {
+        return row.name;
+    });
+}
+
+
+</script>
+</body>
+</html>

@@ -41,7 +41,7 @@ public class DeviceModelController {
 	@RequestMapping("/pages/deviceModel/list")
 	@ResponseBody
 	// page 和 rows 要和请求中一致
-	public EUDataGridResult getDeviceGroupList(@RequestParam(defaultValue="1") Integer page,
+	public EUDataGridResult getDeviceModelList(@RequestParam(defaultValue="1") Integer page,
 			@RequestParam(defaultValue="30") Integer rows){
 		EUDataGridResult item = itemService.getDeviceModelList(page, rows);
 

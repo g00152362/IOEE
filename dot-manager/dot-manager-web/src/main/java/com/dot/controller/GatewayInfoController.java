@@ -8,11 +8,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.dot.jms.MessageSender;
 import com.dot.pojo.TbDeviceGroup;
 import com.dot.pojo.TbGatewayInfo;
 import com.dot.pojo.TbGatewayInfoStat;
+import com.dot.pojo.TbSoftwareRelease;
 import com.dot.service.DeviceGroupService;
 import com.dot.service.GatewayInfoService;
+import com.dot.service.SoftwareReleaseService;
 
 import dot.com.common.pojo.EUDataGridResult;
 import dot.com.common.result.TaotaoResult;
@@ -25,6 +28,11 @@ public class GatewayInfoController {
 	@Autowired	
 	private DeviceGroupService itemGroupService;
 	
+	@Autowired	
+	private SoftwareReleaseService itemSoftwareService;	
+	
+	@Autowired  
+    private MessageSender messageSender;	
 		
 	/**
 	 * 网关信息录入添加 controller
@@ -47,8 +55,7 @@ public class GatewayInfoController {
 			System.out.println("The gateway is exsit+ , esn:" +gwInfo.getSerialNumber());
 			return result;
 		}
-		
-		System.out.println(gwInfo.getGroupName());
+
 		//if group is not exist, create a group
 		if(gwInfo.getGroupName() != null){
 			if(null == itemGroupService.getDeviceGroupDetailByName(gwInfo.getGroupName())){
@@ -166,8 +173,27 @@ public class GatewayInfoController {
 		return TaotaoResult.ok();
 		
 	}
+	/*
+	 *  Notify update the gateway version
+	 */
 	
-	
+	@RequestMapping(value = "/pages/gateway/updateVersion", method = RequestMethod.POST)	
+	@ResponseBody
+	public TaotaoResult updateVersion(@RequestParam("ids")String ids,@RequestParam("esn")String esn){
+
+		//System.out.println("software id"+ids+"esn:"+esn);
+		long id = Long.valueOf(ids);
+		//according the softid get version information
+		TbSoftwareRelease item = itemSoftwareService.getSoftwareBomById(id);
+		String mqttStr = new String();
+		mqttStr = "{" + "\"esn\":"+"\""+esn +"\","
+					  + "\"version\":"+"\""+item.getVersion()+"\"," 
+		              + "\"path\":"+"\""+item.getPath()+"\"" +"}";
+		// send mqtt to the device
+		messageSender.sendMessage("versionUpdate",mqttStr);
+		return TaotaoResult.ok();
+	}	
+		
 	
 
 }

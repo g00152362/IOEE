@@ -46,10 +46,10 @@ public class gatewayDeviceInfoTopicListener implements  MessageListener {
             	if(len != -1){
             		sm = new String(b, 0, len);
             		LOG.info(sm);  
-		            TbGatewayInfo item;
-		            item = (TbGatewayInfo) JsonUtils.jsonString2Object(sm, TbGatewayInfo.class);
-		            item.setUpdatedTime(new Date());	
-		            gatewayInfoService.updateRunGatewayInfo(item);		            
+		//            TbGatewayInfo item;
+	//	            item = (TbGatewayInfo) JsonUtils.jsonString2Object(sm, TbGatewayInfo.class);
+	//	            item.setUpdatedTime(new Date());	
+		  //          gatewayInfoService.updateRunGatewayInfo(item);		            
             	}
 			} catch (JMSException e) {
 				// TODO Auto-generated catch block
@@ -67,10 +67,10 @@ public class gatewayDeviceInfoTopicListener implements  MessageListener {
             TextMessage text = (TextMessage) message;  
             try {          
 	                LOG.info("Received message:" + text.getText());
-		            TbGatewayInfo item;
-		            item = (TbGatewayInfo) JsonUtils.jsonString2Object(text.getText(), TbGatewayInfo.class);
-		            item.setUpdatedTime(new Date());
-		            gatewayInfoService.updateRunGatewayInfo(item);
+		        //    TbGatewayInfo item;
+		      //      item = (TbGatewayInfo) JsonUtils.jsonString2Object(text.getText(), TbGatewayInfo.class);
+		    //        item.setUpdatedTime(new Date());
+		          //  gatewayInfoService.updateRunGatewayInfo(item);
 
             } catch (JMSException e) {  
                 e.printStackTrace();  
