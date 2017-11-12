@@ -44,9 +44,11 @@ public class sensorDataListener implements  MessageListener{
             try {
             	len=bm.readBytes(b);
             	if(len != -1){
+            		int defaultValue = -65535;
             		sm = new String(b, 0, len);
-            	//	LOG.info(sm);  
+            		LOG.info((new Date()) +sm);  
             		msgSensorPacket sensorPacket = new msgSensorPacket();
+
             		sensorPacket = (msgSensorPacket) JsonUtils.jsonString2Object(sm,msgSensorPacket.class);
             	//	System.out.println(sensorPacket.toString());
             		// insert the data record;
@@ -56,7 +58,7 @@ public class sensorDataListener implements  MessageListener{
             		
             		Date dd= new Date();
             		long diff = dd.getTime()/1000;
-             		sd.setTimestamp(diff);
+             		sd.setTimeseq(diff);
              		sd.setDate(dd);
              		
              		long catid;
@@ -68,7 +70,9 @@ public class sensorDataListener implements  MessageListener{
                 	}
                 	else
                 	{
-                  		sernsorDataService.insertSensorData(sd);                	
+                		if(sd.getValue() != defaultValue){
+                			sernsorDataService.insertSensorData(sd);
+                		}
                 	} 
                		
              		catid = sernsorCatService.getSensorCatIdByName("humidity");
@@ -79,7 +83,9 @@ public class sensorDataListener implements  MessageListener{
                 	}
                 	else
                 	{
-                  		sernsorDataService.insertSensorData(sd);                	
+                		if(sd.getValue() != defaultValue){
+                			sernsorDataService.insertSensorData(sd);
+                		}
                 	}             		
                		
              		catid = sernsorCatService.getSensorCatIdByName("ir");
@@ -90,7 +96,9 @@ public class sensorDataListener implements  MessageListener{
                 	}
                 	else
                 	{
-                  		sernsorDataService.insertSensorData(sd);                	
+                		if(sd.getValue() != defaultValue){
+                			sernsorDataService.insertSensorData(sd);
+                		}               	
                 	}  		
 
              		catid = sernsorCatService.getSensorCatIdByName("pressure");
@@ -101,7 +109,9 @@ public class sensorDataListener implements  MessageListener{
                 	}
                 	else
                 	{
-                  		sernsorDataService.insertSensorData(sd);                	
+                		if(sd.getValue() != defaultValue){
+                			sernsorDataService.insertSensorData(sd);
+                		}           	
                 	}   		
 
              		catid = sernsorCatService.getSensorCatIdByName("light");
@@ -112,7 +122,9 @@ public class sensorDataListener implements  MessageListener{
                 	}
                 	else
                 	{
-                  		sernsorDataService.insertSensorData(sd);                	
+                		if(sd.getValue() != defaultValue){
+                			sernsorDataService.insertSensorData(sd);
+                		}               	
                 	}                		
 
              		catid = sernsorCatService.getSensorCatIdByName("noise");
@@ -123,7 +135,9 @@ public class sensorDataListener implements  MessageListener{
                 	}
                 	else
                 	{
-                  		sernsorDataService.insertSensorData(sd);                	
+                		if(sd.getValue() != defaultValue){
+                			sernsorDataService.insertSensorData(sd);
+                		}              	
                 	}   		
 
              		catid = sernsorCatService.getSensorCatIdByName("battery");
@@ -134,7 +148,9 @@ public class sensorDataListener implements  MessageListener{
                 	}
                 	else
                 	{
-                  		sernsorDataService.insertSensorData(sd);                	
+                		if(sd.getValue() != defaultValue){
+                			sernsorDataService.insertSensorData(sd);
+                		}              	
                 	}  
 
              		catid = sernsorCatService.getSensorCatIdByName("accelerate");
@@ -147,7 +163,9 @@ public class sensorDataListener implements  MessageListener{
                 	}
                 	else
                 	{
-                  		sernsorDataService.insertSensorData(sd);                	
+                		if(sd.getValue() != defaultValue){
+                			sernsorDataService.insertSensorData(sd);
+                		}               	
                 	}  
 
              		catid = sernsorCatService.getSensorCatIdByName("gyroscope");
@@ -160,10 +178,12 @@ public class sensorDataListener implements  MessageListener{
                 	}
                 	else
                 	{
-                  		sernsorDataService.insertSensorData(sd);                	
+                		if(sd.getValue() != defaultValue){
+                			sernsorDataService.insertSensorData(sd);
+                		}              	
                 	}   
                		
-             		catid = sernsorCatService.getSensorCatIdByName("hall");            		
+             		catid = sernsorCatService.getSensorCatIdByName("hall");  //magnetic          		
             		sd.setTypeId(catid);             		
             		sd.setValue((float)sensorPacket.getHall());
                 	if (catid < 0){
@@ -171,8 +191,26 @@ public class sensorDataListener implements  MessageListener{
                 	}
                 	else
                 	{
-                  		sernsorDataService.insertSensorData(sd);                	
-                	}    
+                		if(sd.getValue() != defaultValue){
+                			sernsorDataService.insertSensorData(sd);
+                		}              	
+                	}  
+                	
+             		catid = sernsorCatService.getSensorCatIdByName("magnetic");
+            		sd.setTypeId(catid); 
+            		sd.setValue(sensorPacket.getHall_X());
+            		sd.setValue1(sensorPacket.getHall_Y()); 
+            		sd.setValue2(sensorPacket.getHall_Z());               		
+                	if (catid < 0){
+                		LOG.info("can't find item in sensorcat");
+                	}
+                	else
+                	{
+                		if(sd.getValue() != defaultValue){
+                			sernsorDataService.insertSensorData(sd);
+                		}               	
+                	}   
+               		                	
                		           		
             	}
 			} catch (JMSException e) {

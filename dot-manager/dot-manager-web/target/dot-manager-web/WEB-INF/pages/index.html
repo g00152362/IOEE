@@ -113,10 +113,23 @@
 							</ul>
 						</li>
 						<li>
-							<a  href="#" onClick="IotLoadFrame('data-chart.html','js/data-chart.js')">
+							<a  href="#" >
 								<i class="entypo-monitor"></i>
 								<span>数据</span>
 							</a>
+							<ul>
+								<li>
+									<a  href="#" onClick="IotLoadFrame('data-chart.html','js/data-chart.js')">
+										<span>图形报表</span>
+									</a>
+								</li>
+								<li>
+									<a  href="#" onClick="IotLoadFrame('data-detail.html','js/data-detail.js')">
+										<span>详细数据</span>
+									</a>
+								</li>								
+
+							</ul>								
 						</li>
 						
 						<li>
@@ -196,17 +209,15 @@
 	$( "#content-head" ).load('content-head.html');
 //	$( "#sidebar-menu" ).load('sidebar-menu.html');
 	initNavBar();
-	//IotLoadFrame('dash-map.html','js/dash-map.js');
 	
-	IotLoadFrame('dash-map.html','js/dash-map.js');
-//IotLoadFrame('devicemodel-list.html','js/devicemodel-list.js');
-//IotLoadFrame('gateway-list.html','js/gateway-list.js');
+//	IotLoadFrame('dash-map.html','js/dash-map.js');
+IotLoadFrame('gateway-list.html','js/gateway-list.js');
 
 </script>
 
 <!-- all modal must be put here ??? -->	   
    
-<!-- begin select modal--------- -->   
+<!-- begin select group modal--------- -->   
 <div class="modal " id="selectModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -223,6 +234,23 @@
 </div>
 <!-- end modal -->
 
+
+<!-- begin select software modal--------- -->   
+<div class="modal " id="selectSoftwareModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                 <h4 class="modal-title">选择软件版本</h4>
+            </div>
+            <div class="modal-body"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">确认</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end modal -->
 
 
 	<!-- Bottom Scripts -->
@@ -302,12 +330,54 @@ $('#selectModal').on('hide.bs.modal', function (e) {
 });
 
 
+//-------- begin select software modal script ---->
+$('#selectSoftwareModal').on('show.bs.modal', function (e) {
+  //  var loadurl = $(e.relatedTarget).data('load-url');
+	$.ajaxSetup({
+	  cache: false
+	});
+    $(this).find('.modal-body').load('software-select.html',function(){
+			$.getScript('js/software-select.js');
+		});
+});
+
+$('#selectSoftwareModal').on('hide.bs.modal', function (e) {
+
+	var select = getSoftwareSelections();
+ 	if(select[0]  != null){
+  /*  	var cur = localStorage['software_select'];
+    	// use modal_select to know who use select_group;
+    	switch(cur)
+		{
+		case "move_group":
+			// move device group
+    		$('#groupName').val(select[0]);
+    		updateGroupData(select[0]);
+		  break;
+		case "new_device":
+			$('#groupName').val(select[0]);
+		  break;
+		case "group_tag":
+			addGroupTag(gw_list.tagsinput,select[0],select[0],showListBygroup,null);
+		  break;		  
+		}
+    	*/
+    	gw_detail.notifyGatewayVersionUpdate(select[0]);
+    	
+  	}
+});
+
 function getDeviceGroupSelections() {
     return $.map( $('#deviceGroupSelectList').bootstrapTable('getSelections'), function (row) {
         return row.name;
     });
 }
 
+function getSoftwareSelections() {
+    return $.map( $('#softwareSelectList').bootstrapTable('getSelections'), function (row) {
+        return row.id;
+    });
+}
 
 </script>
 </body>

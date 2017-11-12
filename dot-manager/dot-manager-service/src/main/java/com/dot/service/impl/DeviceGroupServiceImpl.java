@@ -58,6 +58,7 @@ public class DeviceGroupServiceImpl implements DeviceGroupService{
 		
 		TbDeviceGroupExample ex = new TbDeviceGroupExample();
 		PageHelper.startPage(page, rows);
+		
 		List<TbDeviceGroup> list = itemMapper.selectByExample(ex);
 		// update the count of group
 		TbDeviceGroup dg= null;

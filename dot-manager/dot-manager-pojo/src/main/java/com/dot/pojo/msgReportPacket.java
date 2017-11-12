@@ -4,7 +4,14 @@ public class msgReportPacket {
 	private String mac;
 	private String esn;
 	private String ip;
+	private int version;
 	
+	public int getVersion() {
+		return version;
+	}
+	public void setVersion(int version) {
+		this.version = version;
+	}
 	public String getMac() {
 		return mac;
 	}

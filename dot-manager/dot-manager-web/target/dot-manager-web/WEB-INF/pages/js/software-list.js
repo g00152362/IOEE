@@ -103,7 +103,8 @@ var sft_list = sft_list || {};
 				 title: "上传时间",
 			     field: "uploadTime",
 			     width: 150,
-			     valign: 'middle',             
+			     valign: 'middle',   
+			     formatter: formatDateTime,
 			    
 			  },
 				 {
@@ -118,7 +119,7 @@ var sft_list = sft_list || {};
 			});
 	
 		$(window).resize(function () {
-			lu_list.$table.bootstrapTable('resetView', {
+			sft_list.$table.bootstrapTable('resetView', {
 		        height: getHeight()
 		    });
 		});
@@ -128,7 +129,7 @@ var sft_list = sft_list || {};
 	
 	function responseHandler(res) {
 		$.each(res.rows, function (i, row) {
-		    row.state = $.inArray(row.id, lu_list.selections) !== -1;
+		    row.state = $.inArray(row.id, sft_list.selections) !== -1;
 		});
 		return res;
 	}

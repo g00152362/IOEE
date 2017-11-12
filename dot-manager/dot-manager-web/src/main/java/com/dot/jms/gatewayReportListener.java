@@ -28,9 +28,6 @@ public class gatewayReportListener implements  MessageListener {
 	@Autowired
 	private GatewayInfoService gatewayInfoService;	
 	
-	@Autowired  
-    private MessageSender messageSender;    
-	
 
 	@Override
 	public void onMessage(Message message) {
@@ -57,12 +54,8 @@ public class gatewayReportListener implements  MessageListener {
             		item.setIp(pkt.getIp());
             		item.setUpdatedTime(new Date());
             		item.setReportTime(new Date());
+            		item.setSoftwareVersion(pkt.getVersion()+"");
             		gatewayInfoService.updateRunGatewayInfo(item);
-            		/////// test
-            		
-       
-            	//	messageSender.sendMessage("good!");
-
             		
             	}
             } catch (JMSException e) {  

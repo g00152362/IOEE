@@ -61,8 +61,8 @@ public class GatewayInfoServiceImpl implements GatewayInfoService {
 		// TODO Auto-generated method stub
 		//S1: lookup the basic information from table gatewayinfo
 		TbGatewayInfoExample ex = new TbGatewayInfoExample();
-		PageHelper.startPage(page, rows);
-		
+	//	PageHelper.startPage(page, rows);
+		PageHelper.startPage(1, 1);
 		List<TbGatewayInfo> list = itemMapper.selectByExample(ex);
 
 		/*SET DEVICE status*/
@@ -76,6 +76,7 @@ public class GatewayInfoServiceImpl implements GatewayInfoService {
 		EUDataGridResult result = new EUDataGridResult();
 		
 		PageInfo<TbGatewayInfo> pageInfo = new PageInfo<>(list);
+		//PageInfo pageInfo = new PageInfo(list);
 		int total = (int) pageInfo.getTotal();
 		result.setTotal( Integer.valueOf(total));
 		result.setRows(list);	
