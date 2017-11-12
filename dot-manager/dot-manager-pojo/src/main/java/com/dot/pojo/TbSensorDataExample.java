@@ -355,63 +355,63 @@ public class TbSensorDataExample {
             return (Criteria) this;
         }
 
-        public Criteria andTimestampIsNull() {
-            addCriterion("timestamp is null");
+        public Criteria andTimeseqIsNull() {
+            addCriterion("timeseq is null");
             return (Criteria) this;
         }
 
-        public Criteria andTimestampIsNotNull() {
-            addCriterion("timestamp is not null");
+        public Criteria andTimeseqIsNotNull() {
+            addCriterion("timeseq is not null");
             return (Criteria) this;
         }
 
-        public Criteria andTimestampEqualTo(Long value) {
-            addCriterion("timestamp =", value, "timestamp");
+        public Criteria andTimeseqEqualTo(Long value) {
+            addCriterion("timeseq =", value, "timeseq");
             return (Criteria) this;
         }
 
-        public Criteria andTimestampNotEqualTo(Long value) {
-            addCriterion("timestamp <>", value, "timestamp");
+        public Criteria andTimeseqNotEqualTo(Long value) {
+            addCriterion("timeseq <>", value, "timeseq");
             return (Criteria) this;
         }
 
-        public Criteria andTimestampGreaterThan(Long value) {
-            addCriterion("timestamp >", value, "timestamp");
+        public Criteria andTimeseqGreaterThan(Long value) {
+            addCriterion("timeseq >", value, "timeseq");
             return (Criteria) this;
         }
 
-        public Criteria andTimestampGreaterThanOrEqualTo(Long value) {
-            addCriterion("timestamp >=", value, "timestamp");
+        public Criteria andTimeseqGreaterThanOrEqualTo(Long value) {
+            addCriterion("timeseq >=", value, "timeseq");
             return (Criteria) this;
         }
 
-        public Criteria andTimestampLessThan(Long value) {
-            addCriterion("timestamp <", value, "timestamp");
+        public Criteria andTimeseqLessThan(Long value) {
+            addCriterion("timeseq <", value, "timeseq");
             return (Criteria) this;
         }
 
-        public Criteria andTimestampLessThanOrEqualTo(Long value) {
-            addCriterion("timestamp <=", value, "timestamp");
+        public Criteria andTimeseqLessThanOrEqualTo(Long value) {
+            addCriterion("timeseq <=", value, "timeseq");
             return (Criteria) this;
         }
 
-        public Criteria andTimestampIn(List<Long> values) {
-            addCriterion("timestamp in", values, "timestamp");
+        public Criteria andTimeseqIn(List<Long> values) {
+            addCriterion("timeseq in", values, "timeseq");
             return (Criteria) this;
         }
 
-        public Criteria andTimestampNotIn(List<Long> values) {
-            addCriterion("timestamp not in", values, "timestamp");
+        public Criteria andTimeseqNotIn(List<Long> values) {
+            addCriterion("timeseq not in", values, "timeseq");
             return (Criteria) this;
         }
 
-        public Criteria andTimestampBetween(Long value1, Long value2) {
-            addCriterion("timestamp between", value1, value2, "timestamp");
+        public Criteria andTimeseqBetween(Long value1, Long value2) {
+            addCriterion("timeseq between", value1, value2, "timeseq");
             return (Criteria) this;
         }
 
-        public Criteria andTimestampNotBetween(Long value1, Long value2) {
-            addCriterion("timestamp not between", value1, value2, "timestamp");
+        public Criteria andTimeseqNotBetween(Long value1, Long value2) {
+            addCriterion("timeseq not between", value1, value2, "timeseq");
             return (Criteria) this;
         }
 

@@ -44,7 +44,7 @@ public class UserSettingController {
 		TaotaoResult result = new TaotaoResult();
 		// tbd: not support username now!
 		List<TbUserSetting> list = setService.getSettingListByUserPage(null, pageName);
-		if(list.size() != 0){
+		if(list!=null && list.size() != 0){
 			TbUserSetting us = list.get(0);
 			result.setStatus(TaotaoResult.SUCCESS);
 			result.setData(us);

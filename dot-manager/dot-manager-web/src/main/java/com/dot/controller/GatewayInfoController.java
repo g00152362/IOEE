@@ -186,8 +186,9 @@ public class GatewayInfoController {
 		//according the softid get version information
 		TbSoftwareRelease item = itemSoftwareService.getSoftwareBomById(id);
 		String mqttStr = new String();
+		long v =(long)( 100 * Float.valueOf(item.getVersion()));
 		mqttStr = "{" + "\"esn\":"+"\""+esn +"\","
-					  + "\"version\":"+"\""+item.getVersion()+"\"," 
+					  + "\"version\":"+""+v+"," 
 		              + "\"path\":"+"\""+item.getPath()+"\"" +"}";
 		// send mqtt to the device
 		messageSender.sendMessage("versionUpdate",mqttStr);

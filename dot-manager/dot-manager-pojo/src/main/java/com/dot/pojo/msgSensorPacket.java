@@ -16,8 +16,33 @@ public class msgSensorPacket {
 	private float gyroscope_Y;
 	private float gyroscope_Z;
 	private float hall;
-	
+	private float hall_X;
+	private float hall_Y;
+	private float hall_Z;	
 
+	public msgSensorPacket() {
+		super();
+		setToDefault();
+		// TODO Auto-generated constructor stub
+	}
+	public float getHall_X() {
+		return hall_X;
+	}
+	public void setHall_X(float hall_X) {
+		this.hall_X = hall_X;
+	}
+	public float getHall_Y() {
+		return hall_Y;
+	}
+	public void setHall_Y(float hall_Y) {
+		this.hall_Y = hall_Y;
+	}
+	public float getHall_Z() {
+		return hall_Z;
+	}
+	public void setHall_Z(float hall_Z) {
+		this.hall_Z = hall_Z;
+	}
 	public float getHall() {
 		return hall;
 	}
@@ -115,6 +140,29 @@ public class msgSensorPacket {
 				+ ", accelerate_X=" + accelerate_X + ", accelerate_Y=" + accelerate_Y + ", accelerate_Z=" + accelerate_Z
 				+ ", gyroscope_X=" + gyroscope_X + ", gyroscope_Y=" + gyroscope_Y + ", gyroscope_Z=" + gyroscope_Z
 				+ ", hall=" + hall + "]";
+	}
+	
+	public  void setToDefault(){
+		int defaultValue = -65535;
+		temperature = defaultValue;
+		humidity = defaultValue;
+		ir = defaultValue;
+		pressure = defaultValue;
+		light = defaultValue;
+		noise = defaultValue;
+		battery = defaultValue;
+		accelerate_X = defaultValue;
+		accelerate_Y = defaultValue;
+		accelerate_Z = defaultValue;
+		gyroscope_X = defaultValue;
+		gyroscope_Y = defaultValue;
+		gyroscope_Z = defaultValue;
+		hall = defaultValue;
+		hall_X = defaultValue;
+		hall_Y = defaultValue;
+		hall_Z = defaultValue;	
+		
+	
 	}
 
 }

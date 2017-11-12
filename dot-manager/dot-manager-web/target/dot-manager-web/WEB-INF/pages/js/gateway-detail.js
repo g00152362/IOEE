@@ -14,7 +14,23 @@ var gw_detail = gw_detail || {};
 
 		initDeviceDetailPage();
 	});
+	
+	$.extend(gw_detail,{
+		notifyGatewayVersionUpdate:function(ids){
+			//var ids =0;
+			var param = {"ids":ids,"esn":gw_detail.$esn};
+			$.ajaxSetup({async: false});
+			
+			$.post("gateway/updateVersion",param, function(data){
+				if(data.status != 200){
+					alert("升级通知失败，请检查网络");
+				}
+			});
+		}
+	});
 })(jQuery, window);
+
+
 
 function initDeviceDetailPage(){
 	var para = {esn:gw_detail.$esn};

@@ -16,6 +16,7 @@ import com.dot.pojo.reqDataCondition;
 import com.dot.service.SensorCatService;
 import com.dot.service.SensorDataService;
 
+import dot.com.common.pojo.EUDataGridResult;
 import dot.com.common.result.TaotaoResult;
 import net.sf.json.JSONObject;
 
@@ -27,6 +28,22 @@ public class SensorDataController {
 	
 	@Autowired
 	private SensorCatService catService;
+	
+
+	@RequestMapping(value = "/pages/sensorData/getdataDetail", method = RequestMethod.POST)	
+	@ResponseBody
+	public EUDataGridResult getSensorDataDetail(reqDataCondition dataCond){
+	//	System.out.println(dataCond.toString() );		
+		TbSensorCat sc;
+		sc = catService.getSensorCatItemByName(dataCond.getType());
+
+		
+		// get result according condition
+		
+		EUDataGridResult re =  dataService.getSensorSortDataListByCond(dataCond, sc.getId());;
+		
+		return re;
+	}
 	
 	@RequestMapping(value = "/pages/sensorData/getdata", method = RequestMethod.POST)	
 	@ResponseBody

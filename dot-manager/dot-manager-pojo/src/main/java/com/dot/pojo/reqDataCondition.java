@@ -1,12 +1,26 @@
 package com.dot.pojo;
 
 public class reqDataCondition {
+	private int pageSize;
+	private int pageNumber;
 	private String mac;
 	private String type;
 	private long startTimestamp;
 	private long endTimestamp;
 	
 	
+	public int getPageSize() {
+		return pageSize;
+	}
+	public void setPageSize(int pageSize) {
+		this.pageSize = pageSize;
+	}
+	public int getPageNumber() {
+		return pageNumber;
+	}
+	public void setPageNumber(int pageNumber) {
+		this.pageNumber = pageNumber;
+	}
 	public String getMac() {
 		return mac;
 	}
@@ -33,8 +47,9 @@ public class reqDataCondition {
 	}
 	@Override
 	public String toString() {
-		return "reqDataCondition [mac=" + mac + ", type=" + type + ", startTimestamp=" + startTimestamp
-				+ ", endTimestamp=" + endTimestamp + "]";
+		return "reqDataCondition [pageSize=" + pageSize + ", pageNumber=" + pageNumber + ", mac=" + mac + ", type="
+				+ type + ", startTimestamp=" + startTimestamp + ", endTimestamp=" + endTimestamp + "]";
 	}
+
 	
 }
