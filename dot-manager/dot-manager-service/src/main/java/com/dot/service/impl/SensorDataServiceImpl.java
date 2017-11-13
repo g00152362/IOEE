@@ -85,17 +85,14 @@ public class SensorDataServiceImpl implements SensorDataService{
 		{
 			cr.andTimeseqGreaterThan(cond.getStartTimestamp());
 		}
-		PageHelper.startPage(cond.getPageNumber(), cond.getPageSize());
-		//PageHelper.startPage(1,10);
+//		System.out.println("num"+cond.getPageNumber() + "size:"+cond.getPageSize());
+		int total = itemMapper.countByExample(example);
+		example.setLimit(cond.getPageSize());
+		example.setOffset(cond.getPageNumber());
 		List<TbSensorData> list = itemMapper.selectByExample(example);
 
 		EUDataGridResult result = new EUDataGridResult();
-		//@SuppressWarnings({ "rawtypes", "unchecked" })
-	//	PageInfo pageInfo = new PageInfo(list);		
-		PageInfo<TbSensorData> pageInfo = new PageInfo<>(list);
-		int total = (int) pageInfo.getTotal();
-	//	System.out.println("@@@@@@@@@@@@page:"+cond.getPageNumber()+"rows:"+cond.getPageSize());
-	//	System.out.println("@@@@@@@@@@@@total:"+total+"list size:"+list.size());
+		
 		result.setTotal( Integer.valueOf(total));
 		result.setRows(list);	
 

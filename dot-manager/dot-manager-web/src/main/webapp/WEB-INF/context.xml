@@ -14,19 +14,26 @@
 		description="My Message Queue"
 		factory="org.apache.activemq.jndi.JNDIReferenceFactory" 
 		physicalName="MyMessageQueue"/>
+
 		
 	<Resource name="myJMS/gatewayInfoTopic"
 		auth="Container"
 		type="org.apache.activemq.command.ActiveMQTopic"
 		factory="org.apache.activemq.jndi.JNDIReferenceFactory"
-		physicalName="gateway.deviceInfo"/>		
+		physicalName="gatewayInfoTopic"/>		
 
 	<Resource name="myJMS/gatewayReport"
 		auth="Container"
 		type="org.apache.activemq.command.ActiveMQTopic"
 		description="report status to conntroller"		
 		factory="org.apache.activemq.jndi.JNDIReferenceFactory"
-		physicalName="gateway.report"/>		
+		physicalName="gateway_report"/>		
+		
+	<Resource name="myJMS/versionUpdate"
+		auth="Container"
+		type="org.apache.activemq.command.ActiveMQTopic"
+		factory="org.apache.activemq.jndi.JNDIReferenceFactory"
+		physicalName="version_Update"/>			
 		
 	<Resource name="myJMS/sensorData"
 		auth="Container"

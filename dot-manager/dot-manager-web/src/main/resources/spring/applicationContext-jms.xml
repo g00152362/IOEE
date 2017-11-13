@@ -18,17 +18,32 @@
     <jee:jndi-lookup id="gatewayInfoTopic" jndi-name="myJMS/gatewayInfoTopic"/>  
     <jee:jndi-lookup id="gatewayReport" jndi-name="myJMS/gatewayReport"/>
     <jee:jndi-lookup id="sensorData" jndi-name="myJMS/sensorData"/>
-     
+    <jee:jndi-lookup id="versionUpdate" jndi-name="versionUpdate"/>      
+
+         
     <!-- Spring JMS Template -->
      <bean id= "jmsTemplate" class = "org.springframework.jms.core.JmsTemplate"
            lazy-init ="true" >
            <property name= "connectionFactory" ref ="connectionFactory" ></property>
            <property name= "defaultDestination" ref = "messageQueue"></property >
      </bean>
+     
+     	<!-- 定义JmsTemplate的Topic类型 -->
+	<bean id="jmsTopicTemplate" class="org.springframework.jms.core.JmsTemplate">
+		 <!-- 这个connectionFactory对应的是我们定义的Spring提供的那个ConnectionFactory对象 -->  
+		<constructor-arg ref="connectionFactory" />
+		<!-- pub/sub模型（发布/订阅） -->
+		<property name="pubSubDomain" value="true" />
+	</bean>    
+	 
+	<bean id="versionUpdate" class="com.dot.jms.MessageSender"  lazy-init ="true">
+		<property name="jmsTemplate" ref="jmsTopicTemplate"></property>
+	</bean>	
 
-	<bean id="messageSender" class="com.dot.jms.MessageSender">
-		<property name="jmsTemplate" ref="jmsTemplate"></property>
+	<bean id="messageSender" class="com.dot.jms.MessageSender"  lazy-init ="true">
+		<property name="jmsTemplate" ref="jmsTopicTemplate"></property>
 	</bean>
+	
 	<bean id="receiveMessageListener"
 		class="com.dot.jms.ReceiveMessageListener"></bean>
 		
@@ -46,7 +61,7 @@
 		<property name="connectionFactory" ref="connectionFactory"></property>
 		<property name="destination" ref="messageQueue"></property>
 		<property name="messageListener" ref="receiveMessageListener"></property>
-  		<property name= "autoStartup" value = "true" />  
+  		<property name= "autoStartup" value = "false" />  
 	</bean>
 	<!-- deviceInfo -->
  	<bean id="listenerTopicContainer"
@@ -62,7 +77,7 @@
 		<property name="connectionFactory" ref="connectionFactory"></property>
 		<property name="destination" ref="gatewayReport"></property>
 		<property name="messageListener" ref="gatewayReportListener"></property>
- 		<property name= "autoStartup" value = "false" />  
+ 		<property name= "autoStartup" value = "true" />  
 	</bean>		
 	
 	<bean id="sensorDataListenerContainer"

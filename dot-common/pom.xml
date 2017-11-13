@@ -9,8 +9,7 @@
   
   <groupId>com.dot</groupId>
   <artifactId>dot-common</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-		<dependencies>
+  <dependencies>
 			<!-- 时间操作组件 -->
 			<dependency>
 				<groupId>joda-time</groupId>

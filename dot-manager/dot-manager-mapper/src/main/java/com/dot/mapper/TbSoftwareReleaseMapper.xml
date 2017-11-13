@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.dot.mapper.TbDeviceGroupMapper" >
-  <resultMap id="BaseResultMap" type="com.dot.pojo.TbDeviceGroup" >
-    <id column="id" property="id" jdbcType="INTEGER" />
+<mapper namespace="com.dot.mapper.TbSoftwareReleaseMapper" >
+  <resultMap id="BaseResultMap" type="com.dot.pojo.TbSoftwareRelease" >
+    <id column="id" property="id" jdbcType="BIGINT" />
     <result column="name" property="name" jdbcType="VARCHAR" />
-    <result column="description" property="description" jdbcType="VARCHAR" />
-    <result column="onlineNumber" property="onlinenumber" jdbcType="INTEGER" />
-    <result column="offlineNumber" property="offlinenumber" jdbcType="INTEGER" />
+    <result column="version" property="version" jdbcType="VARCHAR" />
+    <result column="path" property="path" jdbcType="VARCHAR" />
+    <result column="upload_Time" property="uploadTime" jdbcType="TIMESTAMP" />
+    <result column="filename" property="filename" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -67,15 +68,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, name, description, onlineNumber, offlineNumber
+    id, name, version, path, upload_Time, filename
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.dot.pojo.TbDeviceGroupExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.dot.pojo.TbSoftwareReleaseExample" >
     select
     <if test="distinct" >
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from tb_device_group
+    from tb_software_release
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -83,36 +84,32 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
-    from tb_device_group
-    where id = #{id,jdbcType=INTEGER}
+    from tb_software_release
+    where id = #{id,jdbcType=BIGINT}
   </select>
-  <!-- add by guojun -->
-    <select id="selectAllGroupName" resultType="java.lang.String" >
-    select 
-    name
-    from tb_device_group
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from tb_device_group
-    where id = #{id,jdbcType=INTEGER}
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tb_software_release
+    where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="com.dot.pojo.TbDeviceGroupExample" >
-    delete from tb_device_group
+  <delete id="deleteByExample" parameterType="com.dot.pojo.TbSoftwareReleaseExample" >
+    delete from tb_software_release
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.dot.pojo.TbDeviceGroup" >
-    insert into tb_device_group (id, name, description, 
-      onlineNumber, offlineNumber)
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, 
-      #{onlinenumber,jdbcType=INTEGER}, #{offlinenumber,jdbcType=INTEGER})
+  <insert id="insert" parameterType="com.dot.pojo.TbSoftwareRelease" >
+    insert into tb_software_release (id, name, version, 
+      path, upload_Time, filename
+      )
+    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{version,jdbcType=VARCHAR}, 
+      #{path,jdbcType=VARCHAR}, #{uploadTime,jdbcType=TIMESTAMP}, #{filename,jdbcType=VARCHAR}
+      )
   </insert>
-  <insert id="insertSelective" parameterType="com.dot.pojo.TbDeviceGroup" >
-    insert into tb_device_group
+  <insert id="insertSelective" parameterType="com.dot.pojo.TbSoftwareRelease" >
+    insert into tb_software_release
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
@@ -120,57 +117,66 @@
       <if test="name != null" >
         name,
       </if>
-      <if test="description != null" >
-        description,
+      <if test="version != null" >
+        version,
       </if>
-      <if test="onlinenumber != null" >
-        onlineNumber,
+      <if test="path != null" >
+        path,
       </if>
-      <if test="offlinenumber != null" >
-        offlineNumber,
+      <if test="uploadTime != null" >
+        upload_Time,
+      </if>
+      <if test="filename != null" >
+        filename,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
-        #{id,jdbcType=INTEGER},
+        #{id,jdbcType=BIGINT},
       </if>
       <if test="name != null" >
         #{name,jdbcType=VARCHAR},
       </if>
-      <if test="description != null" >
-        #{description,jdbcType=VARCHAR},
+      <if test="version != null" >
+        #{version,jdbcType=VARCHAR},
       </if>
-      <if test="onlinenumber != null" >
-        #{onlinenumber,jdbcType=INTEGER},
+      <if test="path != null" >
+        #{path,jdbcType=VARCHAR},
       </if>
-      <if test="offlinenumber != null" >
-        #{offlinenumber,jdbcType=INTEGER},
+      <if test="uploadTime != null" >
+        #{uploadTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="filename != null" >
+        #{filename,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.dot.pojo.TbDeviceGroupExample" resultType="java.lang.Integer" >
-    select count(*) from tb_device_group
+  <select id="countByExample" parameterType="com.dot.pojo.TbSoftwareReleaseExample" resultType="java.lang.Integer" >
+    select count(*) from tb_software_release
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
-    update tb_device_group
+    update tb_software_release
     <set >
       <if test="record.id != null" >
-        id = #{record.id,jdbcType=INTEGER},
+        id = #{record.id,jdbcType=BIGINT},
       </if>
       <if test="record.name != null" >
         name = #{record.name,jdbcType=VARCHAR},
       </if>
-      <if test="record.description != null" >
-        description = #{record.description,jdbcType=VARCHAR},
+      <if test="record.version != null" >
+        version = #{record.version,jdbcType=VARCHAR},
       </if>
-      <if test="record.onlinenumber != null" >
-        onlineNumber = #{record.onlinenumber,jdbcType=INTEGER},
+      <if test="record.path != null" >
+        path = #{record.path,jdbcType=VARCHAR},
       </if>
-      <if test="record.offlinenumber != null" >
-        offlineNumber = #{record.offlinenumber,jdbcType=INTEGER},
+      <if test="record.uploadTime != null" >
+        upload_Time = #{record.uploadTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.filename != null" >
+        filename = #{record.filename,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -178,40 +184,45 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map" >
-    update tb_device_group
-    set id = #{record.id,jdbcType=INTEGER},
+    update tb_software_release
+    set id = #{record.id,jdbcType=BIGINT},
       name = #{record.name,jdbcType=VARCHAR},
-      description = #{record.description,jdbcType=VARCHAR},
-      onlineNumber = #{record.onlinenumber,jdbcType=INTEGER},
-      offlineNumber = #{record.offlinenumber,jdbcType=INTEGER}
+      version = #{record.version,jdbcType=VARCHAR},
+      path = #{record.path,jdbcType=VARCHAR},
+      upload_Time = #{record.uploadTime,jdbcType=TIMESTAMP},
+      filename = #{record.filename,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.dot.pojo.TbDeviceGroup" >
-    update tb_device_group
+  <update id="updateByPrimaryKeySelective" parameterType="com.dot.pojo.TbSoftwareRelease" >
+    update tb_software_release
     <set >
       <if test="name != null" >
         name = #{name,jdbcType=VARCHAR},
       </if>
-      <if test="description != null" >
-        description = #{description,jdbcType=VARCHAR},
+      <if test="version != null" >
+        version = #{version,jdbcType=VARCHAR},
       </if>
-      <if test="onlinenumber != null" >
-        onlineNumber = #{onlinenumber,jdbcType=INTEGER},
+      <if test="path != null" >
+        path = #{path,jdbcType=VARCHAR},
       </if>
-      <if test="offlinenumber != null" >
-        offlineNumber = #{offlinenumber,jdbcType=INTEGER},
+      <if test="uploadTime != null" >
+        upload_Time = #{uploadTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="filename != null" >
+        filename = #{filename,jdbcType=VARCHAR},
       </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.dot.pojo.TbDeviceGroup" >
-    update tb_device_group
+  <update id="updateByPrimaryKey" parameterType="com.dot.pojo.TbSoftwareRelease" >
+    update tb_software_release
     set name = #{name,jdbcType=VARCHAR},
-      description = #{description,jdbcType=VARCHAR},
-      onlineNumber = #{onlinenumber,jdbcType=INTEGER},
-      offlineNumber = #{offlinenumber,jdbcType=INTEGER}
-    where id = #{id,jdbcType=INTEGER}
+      version = #{version,jdbcType=VARCHAR},
+      path = #{path,jdbcType=VARCHAR},
+      upload_Time = #{uploadTime,jdbcType=TIMESTAMP},
+      filename = #{filename,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>
