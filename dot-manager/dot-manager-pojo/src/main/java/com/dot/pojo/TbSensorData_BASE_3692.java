@@ -5,7 +5,7 @@ import java.util.Date;
 public class TbSensorData extends TbSensorDataKey {
     private Date date;
 
-    private Long timeseq;
+    private Long timestamp;
 
     private Float value;
 
@@ -23,12 +23,12 @@ public class TbSensorData extends TbSensorDataKey {
         this.date = date;
     }
 
-    public Long getTimeseq() {
-        return timeseq;
+    public Long getTimestamp() {
+        return timestamp;
     }
 
-    public void setTimeseq(Long timeseq) {
-        this.timeseq = timeseq;
+    public void setTimestamp(Long timestamp) {
+        this.timestamp = timestamp;
     }
 
     public Float getValue() {
