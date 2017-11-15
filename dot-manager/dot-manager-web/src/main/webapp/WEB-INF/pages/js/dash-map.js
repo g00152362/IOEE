@@ -47,10 +47,12 @@ function init_map() {
 		 addMarker();			 
 	  });			
 
-		function addMarker(){
-			var add = mapdata[index].position;
-			geoMarkerSet(index,add);
-			index++;
+		function addMarker(){//delete right and left space
+			if(mapdata[index].position != null && mapdata[index].position.replace(/(^\s*)|(\s*$)/g, "") != ""){
+				var add = mapdata[index].position;
+				geoMarkerSet(index,add);
+				index++;
+			}
 		};
 
 	function geoMarkerSet(ii,add){

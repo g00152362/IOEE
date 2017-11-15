@@ -10,6 +10,10 @@ public class TbDeviceModelExample {
 
     protected List<Criteria> oredCriteria;
 
+    private Integer limit;
+
+    private Integer offset;
+
     public TbDeviceModelExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
@@ -61,6 +65,22 @@ public class TbDeviceModelExample {
         oredCriteria.clear();
         orderByClause = null;
         distinct = false;
+    }
+
+    public void setLimit(Integer limit) {
+        this.limit = limit;
+    }
+
+    public Integer getLimit() {
+        return limit;
+    }
+
+    public void setOffset(Integer offset) {
+        this.offset = offset;
+    }
+
+    public Integer getOffset() {
+        return offset;
     }
 
     protected abstract static class GeneratedCriteria {
@@ -701,6 +721,66 @@ public class TbDeviceModelExample {
 
         public Criteria andPhotoNotBetween(String value1, String value2) {
             addCriterion("photo not between", value1, value2, "photo");
+            return (Criteria) this;
+        }
+
+        public Criteria andReportIntervalIsNull() {
+            addCriterion("report_interval is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andReportIntervalIsNotNull() {
+            addCriterion("report_interval is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andReportIntervalEqualTo(Byte value) {
+            addCriterion("report_interval =", value, "reportInterval");
+            return (Criteria) this;
+        }
+
+        public Criteria andReportIntervalNotEqualTo(Byte value) {
+            addCriterion("report_interval <>", value, "reportInterval");
+            return (Criteria) this;
+        }
+
+        public Criteria andReportIntervalGreaterThan(Byte value) {
+            addCriterion("report_interval >", value, "reportInterval");
+            return (Criteria) this;
+        }
+
+        public Criteria andReportIntervalGreaterThanOrEqualTo(Byte value) {
+            addCriterion("report_interval >=", value, "reportInterval");
+            return (Criteria) this;
+        }
+
+        public Criteria andReportIntervalLessThan(Byte value) {
+            addCriterion("report_interval <", value, "reportInterval");
+            return (Criteria) this;
+        }
+
+        public Criteria andReportIntervalLessThanOrEqualTo(Byte value) {
+            addCriterion("report_interval <=", value, "reportInterval");
+            return (Criteria) this;
+        }
+
+        public Criteria andReportIntervalIn(List<Byte> values) {
+            addCriterion("report_interval in", values, "reportInterval");
+            return (Criteria) this;
+        }
+
+        public Criteria andReportIntervalNotIn(List<Byte> values) {
+            addCriterion("report_interval not in", values, "reportInterval");
+            return (Criteria) this;
+        }
+
+        public Criteria andReportIntervalBetween(Byte value1, Byte value2) {
+            addCriterion("report_interval between", value1, value2, "reportInterval");
+            return (Criteria) this;
+        }
+
+        public Criteria andReportIntervalNotBetween(Byte value1, Byte value2) {
+            addCriterion("report_interval not between", value1, value2, "reportInterval");
             return (Criteria) this;
         }
     }

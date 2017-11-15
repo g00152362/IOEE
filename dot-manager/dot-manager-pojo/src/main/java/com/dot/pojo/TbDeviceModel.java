@@ -19,6 +19,8 @@ public class TbDeviceModel {
 
     private String photo;
 
+    private Byte reportInterval;
+
     public String getId() {
         return id;
     }
@@ -89,5 +91,13 @@ public class TbDeviceModel {
 
     public void setPhoto(String photo) {
         this.photo = photo == null ? null : photo.trim();
+    }
+
+    public Byte getReportInterval() {
+        return reportInterval;
+    }
+
+    public void setReportInterval(Byte reportInterval) {
+        this.reportInterval = reportInterval;
     }
 }

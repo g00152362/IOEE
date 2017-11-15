@@ -106,7 +106,7 @@ public class DeviceModelServiceImpl implements DeviceModelService{
 	@Override
 	public List<String> getAllDeviceModelNameList() {
 		
-		List <String> list = itemMapper.selectAllGModelName();
+		List <String> list = itemMapper.selectAllModelName();
 		return list;
 	}
 

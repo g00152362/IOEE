@@ -35,6 +35,8 @@ public class TbGatewayInfo {
 
     private Date updatedTime;
 
+    private Byte reportInterval;
+
     public String getSerialNumber() {
         return serialNumber;
     }
@@ -161,5 +163,13 @@ public class TbGatewayInfo {
 
     public void setUpdatedTime(Date updatedTime) {
         this.updatedTime = updatedTime;
+    }
+
+    public Byte getReportInterval() {
+        return reportInterval;
+    }
+
+    public void setReportInterval(Byte reportInterval) {
+        this.reportInterval = reportInterval;
     }
 }

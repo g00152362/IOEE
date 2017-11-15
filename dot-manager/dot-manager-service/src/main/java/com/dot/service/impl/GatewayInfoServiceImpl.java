@@ -23,7 +23,7 @@ import dot.com.common.result.TaotaoResult;
 @Service
 public class GatewayInfoServiceImpl implements GatewayInfoService {
 	
-	final static long TIMEOUT = 3600*1000; //unit ms
+	final static long TIMEOUT = 3*60*1000; //unit ms 三次*INTERVAL*分钟
 	@Autowired
 	private TbGatewayInfoMapper itemMapper;
 	
@@ -61,8 +61,11 @@ public class GatewayInfoServiceImpl implements GatewayInfoService {
 		// TODO Auto-generated method stub
 		//S1: lookup the basic information from table gatewayinfo
 		TbGatewayInfoExample ex = new TbGatewayInfoExample();
-	//	PageHelper.startPage(page, rows);
-		PageHelper.startPage(1, 1);
+
+		int total = itemMapper.countByExample(ex);
+		
+		ex.setLimit(rows);
+		ex.setOffset(page);
 		List<TbGatewayInfo> list = itemMapper.selectByExample(ex);
 
 		/*SET DEVICE status*/
@@ -75,12 +78,9 @@ public class GatewayInfoServiceImpl implements GatewayInfoService {
 		//S2 according the records, add the run information
 		EUDataGridResult result = new EUDataGridResult();
 		
-		PageInfo<TbGatewayInfo> pageInfo = new PageInfo<>(list);
-		//PageInfo pageInfo = new PageInfo(list);
-		int total = (int) pageInfo.getTotal();
 		result.setTotal( Integer.valueOf(total));
 		result.setRows(list);	
-		
+
 		return result;				
 
 	}
@@ -98,7 +98,7 @@ public class GatewayInfoServiceImpl implements GatewayInfoService {
 		{
 			return 2;
 		}
-		if(cur.getTime()-rpt.getTime() > TIMEOUT){
+		if(cur.getTime()-rpt.getTime() > TIMEOUT * item.getReportInterval()){
 
 			return 0;
 		}

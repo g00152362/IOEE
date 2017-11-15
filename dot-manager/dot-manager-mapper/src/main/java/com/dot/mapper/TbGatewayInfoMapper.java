@@ -32,5 +32,5 @@ public interface TbGatewayInfoMapper {
     
     TbGatewayInfoStat countAllStat();
     
-    TbGatewayInfoStat countStatByGroupName(String groupName);
+    TbGatewayInfoStat countStatByGroupName(String groupName);    
 }

@@ -1,5 +1,4 @@
 var d_dtl = d_dtl || {};
-Setting = {mac:"",showTypeRadios:""} ;
 
 ;(function($, window, undefined){
 	
@@ -35,6 +34,9 @@ Setting = {mac:"",showTypeRadios:""} ;
 			loadDataDetailSetting:function(){
 				var FormObject = document.forms['sensorDetailSettingForm'];	
 				var obj = {pageName:'data-detail'};	
+		    	$.ajaxSetup({
+		    		async: false	
+		    		});				
 				$.post("userSetting/get",obj, function(data){
 					if(data.status == 200){
 						// change the obj
@@ -52,16 +54,11 @@ Setting = {mac:"",showTypeRadios:""} ;
 									if(key=='historyTime'){
 										var t=val.replace(/\+/g, " ");
 										FormObject.elements[key].value = decodeURIComponent(t,true);
-										Setting.mac=decodeURIComponent(t,true);
 										
 									}		
 									if(key=='mac'){
 										FormObject.elements[key].value = decodeURIComponent(val,true);
 									}
-									///temp!!!!!!!!!!!!!
-									//Setting.push({key:FormObject.elements[key].value});
-									// t[key]=FormObject.elements[key].value;
-									//d_dtl.t.push(FormObject.elements[key].value);
 								}
 							}
 						});
@@ -161,16 +158,11 @@ Setting = {mac:"",showTypeRadios:""} ;
 			 		
 	}
 	function queryParams(params) {
-
 		 var start = 0;
 		 var end = 0;
 		 var dd= new Date();
-		 end = parseInt(dd.getTime()/1000);
-/*		 
+		// end = parseInt(dd.getTime()/1000);
 		 var sType=d_dtl.$form['showTypeRadios'].value;
-		 ///////
-		 sType = 'realTime';
-		 
 		 if(sType == 'history'){
 			 var b=d_dtl.$form['historyTime'];
 			 // notice ,must has a space to cut the string!
@@ -185,29 +177,21 @@ Setting = {mac:"",showTypeRadios:""} ;
 			 //start a timer
 		 }
 		 
-	//	 var sDataType=d_dtl.$form['datatype'].value;
-		 var sDataType = "magnetic";
-		 var mac=d_dtl.$mac;
+		 var sDataType=d_dtl.$form['datatype'].value;
+		 console.log(sDataType);
+		 var smac=d_dtl.$form['mac'].value;
+	//	 var sDataType = "magnetic";
+	//	 var mac=d_dtl.$mac;
 		
 		var temp = {
 			 pageNumber: params.offset+1,
              pageSize: params.limit,			 
-			 mac:mac,
+			 mac:smac,
 			 type:sDataType,
 			 startTimestamp:start,
 			 endTimestamp:end
 		 };
-		 */  
-			var temp = {
-					 pageNumber: params.offset+1,
-		             pageSize: params.limit,			 
-					 mac:"60:01:94:43:3f:e5",
-					 type:"magnetic",
-					 startTimestamp:0,
-					 endTimestamp:end
-				 };
-
-		 return temp; 
+		return temp; 
 	} 
 	
 	function responseHandler(res) {

@@ -90,10 +90,10 @@ public class GatewayInfoController {
 	 */
 	@RequestMapping("/pages/gateway/list")
 	@ResponseBody
-	// page 和 rows 要和请求中一致
-	public EUDataGridResult getGatewayList(@RequestParam(defaultValue="1") Integer page,
-			@RequestParam(defaultValue="30") Integer rows){
-		EUDataGridResult item = itemService.getGatewayList(page, rows);
+
+	public EUDataGridResult getGatewayList(@RequestParam(defaultValue="1") Integer offset,
+			@RequestParam(defaultValue="30") Integer limit){
+		EUDataGridResult item = itemService.getGatewayList(offset, limit);
 
 		return item;
 	}	

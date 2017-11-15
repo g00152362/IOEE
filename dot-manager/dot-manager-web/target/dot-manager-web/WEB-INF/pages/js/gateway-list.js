@@ -43,8 +43,12 @@ var gw_list = gw_list || {};
    
     function initTable() {
     	gw_list.$table.bootstrapTable({
-   	     dataField: "rows",
-    //     height: getHeight(),
+   	    dataField: "rows",
+		striped: true,
+		sidePagination: "server",
+		queryParams: queryParamsPages, 
+//			method: 'post',  
+//			contentType : "application/x-www-form-urlencoded",
 
      columns: [
          {
@@ -114,7 +118,13 @@ var gw_list = gw_list || {};
           });
       });
     }
-    
+	function queryParamsPages(params) {
+     	var temp = {
+     			page: params.offset+1,
+     			rows: params.limit,			 
+		 };
+		return temp; 
+	}     
     function responseHandler(res) {
         $.each(res.rows, function (i, row) {
             row.state = $.inArray(row.id, gw_list.selections) !== -1;
