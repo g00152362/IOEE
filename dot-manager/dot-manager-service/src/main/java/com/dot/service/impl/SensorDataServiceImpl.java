@@ -66,7 +66,7 @@ public class SensorDataServiceImpl implements SensorDataService{
 	}
 	
 	@Override
-	public  EUDataGridResult getSensorSortDataListByCond(reqDataCondition cond, long typeId) {
+	public  EUDataGridResult getSensorSortDataListByCond(reqDataCondition cond, long typeId,int isAsc) {
 		// TODO Auto-generated method stub
 		TbSensorDataExample example = new TbSensorDataExample();
 	//	PageHelper.startPage(cond.getPageNumber(), cond.getPageSize());
@@ -75,7 +75,13 @@ public class SensorDataServiceImpl implements SensorDataService{
 		cr.andMacEqualTo(cond.getMac());
 		cr.andTypeIdEqualTo(typeId);
 		//String s = "timeseq DESC" + "LIMIT 10,30";//+ cond.getPageNumber()+","+cond.getPageSize() ;
-		example.setOrderByClause("timeseq DESC");
+		if(isAsc == 0)
+		{
+			example.setOrderByClause("timeseq DESC");
+		}
+		else {
+			example.setOrderByClause("timeseq ASC");
+		}
 		
 		//System.out.println("start"+cond.getStartTimestamp()+"end"+cond.getEndTimestamp());
 		if(cond.getEndTimestamp() != 0){

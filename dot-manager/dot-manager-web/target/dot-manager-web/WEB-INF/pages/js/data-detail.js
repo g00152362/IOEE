@@ -94,31 +94,31 @@ var d_dtl = d_dtl || {};
 		//	height: getHeight(),
 	
 			columns: [
-			 {
-			     title: "id",
-			     field: "id", 
-			     visible:false,
-			 },        
-			 {
-			     title: "Mac",
-			     field: "mac",
-			     width: 180,
-			     valign: 'middle',   
-			 },
-			
-			 {
-				 title: "X ",
-				 field: "value",
-			     width: 50,
-			     valign: 'middle',             
-			   },         
-			 {
-				 title: "Y",
-			     field: "value1",
-			     width: 50,
-			     valign: 'middle',             
-			    
-			  },
+				 {
+				     title: "id",
+				     field: "id", 
+				     visible:false,
+				 },        
+				 {
+				     title: "Mac",
+				     field: "mac",
+				     width: 180,
+				     valign: 'middle',   
+				 },
+				
+				 {
+					 title: "X ",
+					 field: "value",
+				     width: 50,
+				     valign: 'middle',             
+				   },         
+				 {
+					 title: "Y",
+				     field: "value1",
+				     width: 50,
+				     valign: 'middle',             
+				    
+				  },
 				 {
 					 title: "Z",
 				     field: "value2",
@@ -126,6 +126,7 @@ var d_dtl = d_dtl || {};
 				     valign: 'middle',             
 				    
 				  },
+				  
 				  {
 				 	 title: "上报时间",
 				      field: "timeseq",
@@ -184,7 +185,7 @@ var d_dtl = d_dtl || {};
 	//	 var mac=d_dtl.$mac;
 		
 		var temp = {
-			 pageNumber: params.offset+1,
+			 pageNumber: params.offset,  //? +1
              pageSize: params.limit,			 
 			 mac:smac,
 			 type:sDataType,

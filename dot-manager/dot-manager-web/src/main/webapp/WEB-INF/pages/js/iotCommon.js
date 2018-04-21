@@ -65,7 +65,8 @@ function initNavBar(){
 	g_navBarName['System'] = "<a href='#' >系统</a>";	
 	g_navBarName['Loginuser'] = "<a href='#' onClick=\"IotLoadFrame('loginuser-list.html','js/loginuser-list.js')\">用户管理</a>";	
 	g_navBarName['Software'] = "<a href='#' onClick=\"IotLoadFrame('software-list.html','js/software-list.js')\">用户管理</a>";	
-
+	g_navBarName['Alarm'] = "<a href='#' onClick=\"IotLoadFrame('alarm-list.html','js/alarm-list.js')\">告警</a>";	
+	
 	g_navBarName['Add'] = "<strong>新增</strong>";
 	g_navBarName['List'] = "<strong>列表</strong>";
 	g_navBarName['Edit'] = "<strong>编辑</strong>";

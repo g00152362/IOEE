@@ -55,7 +55,20 @@ public class gatewayReportListener implements  MessageListener {
             		item.setUpdatedTime(new Date());
             		item.setReportTime(new Date());
             		item.setSoftwareVersion(pkt.getVersion()+"");
-            		gatewayInfoService.updateRunGatewayInfo(item);
+            		if(gatewayInfoService.getGatewayBySeriesNumber(pkt.getEsn()) != null)
+            		{
+            			gatewayInfoService.updateRunGatewayInfo(item);
+            		}
+            		else{
+            			//directly insert, not safe , for test
+            			item.setDeviceName(pkt.getEsn());
+            			item.setCreated(new Date());
+            			item.setType("WE601-1");
+            			byte tt = 5;
+            			item.setReportInterval(tt);
+            			gatewayInfoService.createGatewayInfoItem(item);
+            		}
+            		
             		
             	}
             } catch (JMSException e) {  

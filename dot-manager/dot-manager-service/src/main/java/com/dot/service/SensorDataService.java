@@ -14,7 +14,7 @@ public interface SensorDataService {
 	TaotaoResult deleteSensorDataByMac(String mac);
 	
 	public  List<TbSensorData> getSensorDataListByCond(reqDataCondition cond, long typeId);
-	public  EUDataGridResult getSensorSortDataListByCond(reqDataCondition cond, long typeId);	
+	public  EUDataGridResult getSensorSortDataListByCond(reqDataCondition cond, long typeId,int isAsc);	
 	
 
 }

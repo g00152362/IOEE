@@ -27,4 +27,8 @@ public interface TbSensorCatMapper {
     int updateByPrimaryKeySelective(TbSensorCat record);
 
     int updateByPrimaryKey(TbSensorCat record);
+    
+    List<String> listNameAll();           //获取全部的数据类别名称
+    
+    TbSensorCat selectByName(String name);        //通过名字获取类别
 }

@@ -314,10 +314,10 @@ function showRealchart(){
 	
 	var dd= new Date();
 	var start =parseInt( dd.getTime()/1000);	
-	
+	var mac = ds.$form['mac2'];
 	g_sendTimerId = setInterval(function () {
 
-		var param = {mac:"12:D2:08:2D:07:98",
+		var param = {mac:mac.value,
 				 type:"",
 				 startTimestamp:start,
 				 endTimestamp:0
@@ -346,7 +346,8 @@ function showHistorychart(chartObj,name){
     var start = parseInt(dd.getTime()/1000);
     var dd1 = new  Date(endTime);
     var end = parseInt(dd1.getTime()/1000);
-	var param = {mac:"12:D2:08:2D:07:98",
+    var mac = ds.$form['mac2'];
+	var param = {mac:mac.value,
 				 type:name,
 				 startTimestamp:start,
 				 endTimestamp:end

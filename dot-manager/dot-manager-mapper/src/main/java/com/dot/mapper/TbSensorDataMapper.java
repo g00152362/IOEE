@@ -28,4 +28,6 @@ public interface TbSensorDataMapper {
     int updateByPrimaryKeySelective(TbSensorData record);
 
     int updateByPrimaryKey(TbSensorData record);
+    
+    List<TbSensorData> list(Long start);
 }
