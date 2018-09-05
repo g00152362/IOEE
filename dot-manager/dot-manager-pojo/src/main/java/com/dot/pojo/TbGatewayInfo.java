@@ -37,6 +37,10 @@ public class TbGatewayInfo {
 
     private Byte reportInterval;
 
+    private Byte nodeType;
+
+    private String gatewayMac;
+
     public String getSerialNumber() {
         return serialNumber;
     }
@@ -171,5 +175,21 @@ public class TbGatewayInfo {
 
     public void setReportInterval(Byte reportInterval) {
         this.reportInterval = reportInterval;
+    }
+
+    public Byte getNodeType() {
+        return nodeType;
+    }
+
+    public void setNodeType(Byte nodeType) {
+        this.nodeType = nodeType;
+    }
+
+    public String getGatewayMac() {
+        return gatewayMac;
+    }
+
+    public void setGatewayMac(String gatewayMac) {
+        this.gatewayMac = gatewayMac == null ? null : gatewayMac.trim();
     }
 }

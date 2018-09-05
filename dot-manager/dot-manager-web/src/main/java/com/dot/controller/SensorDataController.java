@@ -40,7 +40,7 @@ public class SensorDataController {
 		
 		// get result according condition
 		
-		EUDataGridResult re =  dataService.getSensorSortDataListByCond(dataCond, sc.getId());;
+		EUDataGridResult re =  dataService.getSensorSortDataListByCond(dataCond, sc.getId(),1);;
 		
 		return re;
 	}

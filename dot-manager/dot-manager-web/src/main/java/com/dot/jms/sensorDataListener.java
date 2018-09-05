@@ -80,6 +80,7 @@ public class sensorDataListener implements  MessageListener{
             		sd.setValue(sensorPacket.getHumidity());
                 	if (catid < 0){
                 		LOG.info("can't find item in sensorcat");
+
                 	}
                 	else
                 	{
@@ -209,8 +210,33 @@ public class sensorDataListener implements  MessageListener{
                 		if(sd.getValue() != defaultValue){
                 			sernsorDataService.insertSensorData(sd);
                 		}               	
-                	}   
-               		                	
+                	}  
+                	
+             		catid = sernsorCatService.getSensorCatIdByName("water");          		
+            		sd.setTypeId(catid);             		
+            		sd.setValue((float)sensorPacket.getWater());
+                	if (catid < 0){
+                		LOG.info("can't find item in sensorcat");
+                	}
+                	else
+                	{
+                		if(sd.getValue() != defaultValue){
+                			sernsorDataService.insertSensorData(sd);
+                		}              	
+                	}         
+                	
+             		catid = sernsorCatService.getSensorCatIdByName("smoke");          		
+            		sd.setTypeId(catid);             		
+            		sd.setValue((float)sensorPacket.getSmoke());
+                	if (catid < 0){
+                		LOG.info("can't find item in sensorcat");
+                	}
+                	else
+                	{
+                		if(sd.getValue() != defaultValue){
+                			sernsorDataService.insertSensorData(sd);
+                		}              	
+                	}                 		                	
                		           		
             	}
 			} catch (JMSException e) {

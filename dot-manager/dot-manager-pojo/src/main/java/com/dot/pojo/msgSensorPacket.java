@@ -8,7 +8,7 @@ public class msgSensorPacket {
 	private int  pressure;
 	private float light;
 	private int  noise;
-	private int  battery;
+	private float  battery;
 	private float accelerate_X;
 	private float accelerate_Y;
 	private float accelerate_Z;
@@ -19,6 +19,8 @@ public class msgSensorPacket {
 	private float hall_X;
 	private float hall_Y;
 	private float hall_Z;	
+	private int water;	
+	private int smoke;	
 
 	public msgSensorPacket() {
 		super();
@@ -91,10 +93,10 @@ public class msgSensorPacket {
 	public void setNoise(int noise) {
 		this.noise = noise;
 	}
-	public int getBattery() {
+	public float getBattery() {
 		return battery;
 	}
-	public void setBattery(int battery) {
+	public void setBattery(float battery) {
 		this.battery = battery;
 	}
 	public float getAccelerate_X() {
@@ -132,6 +134,18 @@ public class msgSensorPacket {
 	}
 	public void setGyroscope_Z(float gyroscope_Z) {
 		this.gyroscope_Z = gyroscope_Z;
+	}
+	public int getWater() {
+		return water;
+	}
+	public void setWater(int water) {
+		this.water = water;
+	}
+	public int getSmoke() {
+		return smoke;
+	}
+	public void setSmoke(int smoke) {
+		this.smoke = smoke;
 	}
 	@Override
 	public String toString() {

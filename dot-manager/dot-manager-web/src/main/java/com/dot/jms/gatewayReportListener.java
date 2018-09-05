@@ -40,6 +40,7 @@ public class gatewayReportListener implements  MessageListener {
             
             int len = -1;    
             String sm;
+            int type;
               
             try {
             	len=bm.readBytes(b);
@@ -55,6 +56,17 @@ public class gatewayReportListener implements  MessageListener {
             		item.setUpdatedTime(new Date());
             		item.setReportTime(new Date());
             		item.setSoftwareVersion(pkt.getVersion()+"");
+            		if(pkt.getReboot() != 0){
+            			item.setLastRebootType(pkt.getReboot());
+            		}
+            			
+            		type = pkt.getType();
+            		item.setNodeType((byte)type);
+            		if(type == 1 ){
+            			// sensor, record gw mac
+            			item.setGatewayMac(pkt.getGateway());
+            		}
+            		
             		if(gatewayInfoService.getGatewayBySeriesNumber(pkt.getEsn()) != null)
             		{
             			gatewayInfoService.updateRunGatewayInfo(item);
@@ -64,7 +76,7 @@ public class gatewayReportListener implements  MessageListener {
             			item.setDeviceName(pkt.getEsn());
             			item.setCreated(new Date());
             			item.setType("WE601-1");
-            			byte tt = 5;
+            			byte tt = 60;
             			item.setReportInterval(tt);
             			gatewayInfoService.createGatewayInfoItem(item);
             		}

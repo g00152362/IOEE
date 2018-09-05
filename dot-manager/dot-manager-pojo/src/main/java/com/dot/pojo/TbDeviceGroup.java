@@ -60,4 +60,11 @@ public class TbDeviceGroup {
     public void setOfflinenumber(Integer offlinenumber) {
         this.offlinenumber = offlinenumber;
     }
+
+	@Override
+	public String toString() {
+		return "TbDeviceGroup [id=" + id + ", name=" + name + ", description=" + description + ", onlinenumber="
+				+ onlinenumber + ", offlinenumber=" + offlinenumber + ", unregeisterednumber=" + unregeisterednumber
+				+ "]";
+	}
 }

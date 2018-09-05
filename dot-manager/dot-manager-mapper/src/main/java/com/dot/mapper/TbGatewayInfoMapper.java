@@ -29,8 +29,8 @@ public interface TbGatewayInfoMapper {
     int updateByPrimaryKeySelective(TbGatewayInfo record);
 
     int updateByPrimaryKey(TbGatewayInfo record);
-    
+
     TbGatewayInfoStat countAllStat();
     
-    TbGatewayInfoStat countStatByGroupName(String groupName);    
+    TbGatewayInfoStat countStatByGroupName(String groupName);     
 }
